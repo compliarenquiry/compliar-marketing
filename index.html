@@ -3,14 +3,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Compliar — Fire, Security &amp; Electrical Contractor Software</title>
-<meta name="description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. £105 + VAT a month for 3 users. 30-day free trial.">
+<meta name="description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
 <link rel="canonical" href="https://compliar.co.uk/">
 <meta name="theme-color" content="#1B2430">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231B2430'/%3E%3Cpath d='M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z' fill='%23E07B39'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compliar">
 <meta property="og:title" content="Compliar — Software for fire, security &amp; electrical contractors">
-<meta property="og:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. £105 + VAT a month for 3 users. 30-day free trial.">
+<meta property="og:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
 <meta property="og:url" content="https://compliar.co.uk/">
 <meta property="og:image" content="https://compliar.co.uk/og.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://compliar.co.uk/og.png">
 <meta name="twitter:title" content="Compliar — Software for fire, security &amp; electrical contractors">
-<meta name="twitter:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. £105 + VAT a month for 3 users. 30-day free trial.">
+<meta name="twitter:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,10 +30,12 @@
   "operatingSystem": "Web browser",
   "description": "Job management, scheduling, certificates, quoting, invoicing, projects and job costing software for UK fire, security and electrical contractors.",
   "offers": {
-    "@type": "Offer",
-    "price": "105.00",
+    "@type": "AggregateOffer",
+    "lowPrice": "20.00",
+    "highPrice": "49.00",
     "priceCurrency": "GBP",
-    "description": "Per month plus VAT, including 3 users, then £35 plus VAT per extra user. 30-day free trial, no card required."
+    "offerCount": "4",
+    "description": "Per user per month plus VAT: Lite £20, Pro £30, Premium £38, Design £49. Two months free when paid yearly. 30-day free trial, no card required."
   }
 }
 </script>
@@ -422,8 +424,27 @@
   .roadmap-card p{font-size:0.88rem;color:var(--muted);}
 
   /* pricing */
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
-  @media (max-width:900px){.price-grid{grid-template-columns:1fr;}}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch;}
+  @media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
+  .seat-note{
+    display:inline-block;margin-left:10px;font-size:0.74rem;color:var(--muted);
+    font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em;
+  }
+  .seat-calc{
+    max-width:760px;margin:36px auto 0;padding:24px 26px;background:#fff;
+    border:1px solid var(--line);border-radius:10px;
+  }
+  .seat-calc h3{font-size:1.15rem;color:var(--ink);margin-bottom:14px;}
+  .seat-calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media (max-width:640px){.seat-calc-grid{grid-template-columns:repeat(2,1fr);}}
+  .seat-calc label{display:flex;flex-direction:column;gap:6px;font-size:0.82rem;color:var(--muted);}
+  .seat-calc input{
+    height:44px;border:1px solid var(--line);border-radius:6px;padding:0 10px;
+    font-size:1rem;color:var(--ink);background:var(--cream);width:100%;
+  }
+  .seat-calc-out{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:0.92rem;}
+  .seat-calc-out .big{font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--ink);}
   .price-card{
     border:1px solid var(--line);border-radius:10px;padding:30px 26px;background:#fff;
     display:flex;flex-direction:column;
@@ -504,7 +525,6 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#compare">Compare</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
@@ -553,7 +573,7 @@
 
         <div class="calc-result">
           <div class="lbl">Recommended standby battery</div>
-          <div><span class="out" id="sizeOut">12</span><span class="unit">Ah</span></div>
+          <div><span class="out" id="sizeOut">7</span><span class="unit">Ah</span></div>
         </div>
         <div class="calc-note">(Iq × 24h + Ia × 0.5h) × 1.25 safety margin, rounded to the nearest standard VRLA size. Illustrative — confirm against your own design assumptions.</div>
       </div>
@@ -570,7 +590,7 @@
         </div>
         <div class="why-copy">
           <p>Compliar was built by someone who has spent 20 years in electrical, fire and security — leading teams through audits, taking fire &amp; security companies through compliance and accreditation, and working with plenty of different software in the field and at the desk. None of it ever covered everything the job needed. So Compliar started as a working tool inside a small fire, security &amp; electrical company, shaped around how a 4–6 person team actually gets through a week: a technician checking in on site, filling in a real certificate, and a quote or invoice going out the same day.</p>
-          <p>The platforms that come closest are built and priced for much bigger companies, out of reach for the small and medium-sized businesses that make up most of the industry. Compliar covers every part of running a job and a business in this trade — scheduling, certification across electrical, life and property safety in nineteen disciplines, quoting, invoicing, projects, job costing, reporting, assets and stock — at a price that fits the size of company most of the industry actually is. No module you'll never switch on, and no licence tiers built around headcount you don't have.</p>
+          <p>The platforms that come closest are built and priced for much bigger companies, out of reach for the small and medium-sized businesses that make up most of the industry. Compliar covers every part of running a job and a business in this trade — scheduling, certification across electrical, life and property safety in nineteen disciplines, quoting, invoicing, projects, job costing, reporting, assets and stock — at a price that fits the size of company most of the industry actually is. You pay per person, and each person's seat includes what their job needs. No module you'll never switch on, and no minimum number of seats.</p>
         </div>
       </div>
       <div class="why-stats">
@@ -647,7 +667,7 @@
           <h3>Certificates that do the maths for you</h3>
           <p>A 15 field-type certificate engine spanning nineteen disciplines — fire, intruder, CCTV, access control, emergency lighting, electrical installation, EV charging, PAT testing and more — including two built-in calculators most platforms leave to a separate spreadsheet: BS 5839-1:2025 Annex E battery sizing, and PAS 79-style fire risk scoring.</p>
           <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Build and edit your own certificate templates — no waiting on a vendor's design team</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Build and edit your own certificate templates — no waiting on a vendor's design team (Premium seats and up)</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto battery sizing and fire-risk scoring, calculated as you fill the form</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Clean, read-only print view and a full issued-certificate history</li>
           </ul>
@@ -661,7 +681,7 @@
               <div class="cert-field"><span class="k">Measured quiescent current</span><span class="v">180 mA</span></div>
               <div class="cert-field"><span class="k">Measured alarm current</span><span class="v">1.2 A</span></div>
               <div class="cert-field"><span class="k">Standby duration</span><span class="v">24 h</span></div>
-              <div class="cert-result-chip"><span class="k">CALCULATED BATTERY SIZE</span><span class="v">12 Ah</span></div>
+              <div class="cert-result-chip"><span class="k">CALCULATED BATTERY SIZE</span><span class="v">7 Ah</span></div>
             </div>
           </div>
         </div>
@@ -701,6 +721,7 @@
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales quotes and defect quotes, tracked and numbered separately</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Real email dispatch straight from the job, PDF attached automatically</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Company bank details and terms pulled in automatically</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Quotes and defect quotes start on a Lite seat; invoicing and credit control are on Pro seats and up</li>
           </ul>
         </div>
         <div class="feat-visual">
@@ -807,7 +828,7 @@
       <!-- Job costing -->
       <div class="feature-row">
         <div class="feat-copy">
-          <span class="feat-tag">Job costing</span>
+          <span class="feat-tag">Job costing</span><span class="seat-note">Premium seats and up</span>
           <h3>Know what every job really earned</h3>
           <p>Log labour on the job from the desk or the phone, billable or not, with a cost rate and a charge rate for each engineer. Every job shows its sell revenue against labour and materials cost, with gross profit and margin worked out as you go.</p>
           <ul class="feat-list">
@@ -832,7 +853,7 @@
       <!-- Projects &amp; tenders -->
       <div class="feature-row reverse">
         <div class="feat-copy">
-          <span class="feat-tag">Projects &amp; tenders</span>
+          <span class="feat-tag">Projects &amp; tenders</span><span class="seat-note">Premium seats and up</span>
           <h3>Price a whole project, area by area</h3>
           <p>Start a project from a prospect or an existing customer site, break it into floors and areas, and build the bill of quantities line by line — parts, labour hours and waste — at your target margin. Cost, sell, margin and VAT update as you build it.</p>
           <ul class="feat-list">
@@ -864,6 +885,7 @@
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Full equipment register per property, in your own asset types with codes like FAP-001</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts, warehouses and live stock levels</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Purchase orders, dispatched to suppliers with a real PDF attached</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The asset register starts on a Lite seat; stock and purchase orders are on Pro seats and up</li>
           </ul>
         </div>
         <div class="feat-visual">
@@ -942,7 +964,7 @@
       <!-- RAMS -->
       <div class="feature-row reverse">
         <div class="feat-copy">
-          <span class="feat-tag">RAMS</span>
+          <span class="feat-tag">RAMS</span><span class="seat-note">Pro seats and up</span>
           <h3>Risk assessments without starting from a blank page</h3>
           <p>Create a RAMS straight from a job and it pulls in hazards and a method statement from ready-made templates covering every discipline Compliar supports — or start from a blank RAMS for anything bespoke. Signed off on site and issued as a PDF.</p>
           <ul class="feat-list">
@@ -967,33 +989,6 @@
     </div>
   </section>
 
-  <!-- COMPARE -->
-  <section class="band" id="compare" style="background:#fff;">
-    <div class="wrap">
-      <div class="section-head center">
-        <div class="eyebrow">How Compliar compares</div>
-        <h2>Straight answers, side by side.</h2>
-        <p>Compared using what three leading field-service platforms publish on their own websites, checked on 9 October 2026. Where a vendor doesn't publish a price, we use a customer's invoice and say so; where we have neither, we say so rather than guess.</p>
-      </div>
-      <div class="cmp-wrap">
-        <table class="cmp">
-          <thead><tr><th></th><th class="us">Compliar</th><th>Fire &amp; security specialist</th><th>Multi-trade platform A</th><th>Multi-trade platform B</th></tr></thead>
-          <tbody>
-          <tr><th scope="row">Built for</th><td class="us">Fire, security &amp; electrical contractors</td><td>Fire protection and security businesses</td><td>30+ trades, including fire &amp; security</td><td>Fire protection and other trades</td></tr>
-          <tr><th scope="row">Price published</th><td class="us">Yes — £105 + VAT a month</td><td>No — a customer's invoice shows from £500 a month (5 seats minimum), £100 per extra seat, plus onboarding</td><td>Entry plan from £45 per user a month, billed annually</td><td>No — request pricing</td></tr>
-          <tr><th scope="row">Cost for a team of 5</th><td class="us">£175 + VAT a month, billed monthly</td><td>£500 a month, plus onboarding (from a customer's invoice)</td><td>From £225 a month, billed annually (their example)</td><td>Quote on request</td></tr>
-          <tr><th scope="row">Free trial</th><td class="us">30 days, no card</td><td>Not stated</td><td>Yes on the entry plan, no card</td><td>Not stated (demo offered)</td></tr>
-          <tr><th scope="row">Minimum term</th><td class="us">None — billed monthly, cancel any time</td><td>No lock-in, billed monthly</td><td>"Most customers commit to 24 or 36 months"</td><td>Not stated</td></tr>
-          <tr><th scope="row">Setup fee</th><td class="us">Optional: £649 + VAT for 10 hours with the person who built it</td><td>£1,500 onboarding (from a customer's invoice)</td><td>"In some instances there will be a fee"</td><td>Not stated</td></tr>
-          <tr><th scope="row">Quoting and customer portal</th><td class="us">Yes</td><td>Yes</td><td>Yes</td><td>Quoting yes; portal not listed on their fire page</td></tr>
-          <tr><th scope="row">Field app</th><td class="us">Runs in the phone's browser — no app-store download and no offline mode yet</td><td>iOS and Android apps, with offline mode</td><td>Mobile app for engineers</td><td>Mobile app</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="cmp-note">Based on each platform's public pricing and product pages when checked on 9 October 2026; "not stated" means the page didn't say. Prices and terms change, so check before you decide. We keep our sources on file — if anything here is out of date or unfair, email <a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a> and we'll correct it.</p>
-    </div>
-  </section>
-
   <!-- ROADMAP -->
   <section class="band" id="roadmap">
     <div class="wrap">
@@ -1004,14 +999,14 @@
       </div>
       <div class="roadmap-grid">
         <div class="roadmap-card">
-          <span class="roadmap-badge">Planned</span>
-          <h4>Accounting integration</h4>
-          <p>Two-way sync with Xero, Sage and QuickBooks, so invoices and payments don't have to be re-typed into a separate set of books.</p>
+          <span class="roadmap-badge">In planning</span>
+          <h4>Accounting link</h4>
+          <p>A link to your accounting software, so invoices and payments don't have to be typed in twice. Not available yet.</p>
         </div>
         <div class="roadmap-card">
-          <span class="roadmap-badge">Planned</span>
-          <h4>Deeper reporting</h4>
-          <p>SLA tracking and technician-activity dashboards, building on the compliance, data-quality, financial and per-job costing reports already live today.</p>
+          <span class="roadmap-badge">In testing</span>
+          <h4>Offline field mode</h4>
+          <p>Working through a job on site with no signal, then syncing when the phone is back online. Not switched on for customers yet; today the field app needs a mobile signal.</p>
         </div>
       </div>
     </div>
@@ -1022,26 +1017,81 @@
     <div class="wrap">
       <div class="section-head center">
         <div class="eyebrow">Pricing</div>
-        <h2>One simple price. No quotes, no surprises.</h2>
-        <p>£105 + VAT a month covers your first 3 users, then £35 + VAT for each user after that — no tiers, no seat caps, no calling for a quote. Add people as you grow and the bill grows with you; remove someone and it drops from your next billing cycle, automatically. Every account starts with a 30-day free trial — no card required.</p>
+        <h2>Priced per person. Each seat pays for what that person uses.</h2>
+        <p>Give field engineers a Lite seat, the office a Pro seat, and so on up, and mix them in one company. There is no minimum number of seats and no price to ask for. Pay yearly and you get two months free. Every account starts with a 30-day free trial, no card required.</p>
       </div>
-      <div class="price-grid" style="grid-template-columns:1fr;max-width:440px;margin:0 auto;">
+      <div class="price-grid">
         <div class="price-card">
-          <div class="price-name">Compliar</div>
-          <div class="price-for">Scheduling, certificates, quoting &amp; invoicing, projects &amp; estimating, job costing, assets, mobile field app — everything, for every user</div>
+          <div class="price-name">Lite</div>
+          <div class="price-for">For field engineers: the basics, plus assets, reports, defects and quotes.</div>
+          <div class="price-cta-line">£20<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
+          <div class="price-cta-sub">or £200 + VAT a year (two months free)</div>
           <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No seat cap, no tiers — just £35 + VAT per user after the first 3</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Remove a user and your bill drops next cycle — automatically</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates, incl. live battery sizing</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>30-day free trial, no card required</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar and jobs</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Customers, sites, assets and log books</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates across 19 disciplines, with live battery sizing</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Defects and quotes</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reports: compliance status, data quality, SLA and technician activity</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Timesheets</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The field app on a phone</li>
           </ul>
-          <div class="price-cta-line">£105<span style="font-size:0.48em;">&nbsp;+ VAT /mo</span></div>
-          <div class="price-cta-sub">for your first 3 users, then £35 + VAT per extra user/mo</div>
-          <div class="price-cta-sub">Optional but recommended: 10 hours of hands-on setup &amp; support, direct with the person who built Compliar — £649 + VAT flat. Setup or support outside this package is quoted separately and may add delays.</div>
-          <a class="btn btn-primary" style="margin-top:18px;" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free trial</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Pro</div>
+          <div class="price-for">For the office: everything in Lite plus the full desk.</div>
+          <div class="price-cta-line">£30<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
+          <div class="price-cta-sub">or £300 + VAT a year (two months free)</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Lite</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Maintenance plans</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Invoicing and credit control</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Rates and charges, scope blocks</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Stock and purchase orders</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>RAMS</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Premium</div>
+          <div class="price-for">For estimating and control: everything in Pro plus projects and costing.</div>
+          <div class="price-cta-line">£38<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
+          <div class="price-cta-sub">or £380 + VAT a year (two months free)</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Pro</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Projects and tenders with bills of quantities</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Job costing and margin</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced reports: financial and project delivery</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own certificate templates</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Design</div>
+          <div class="price-for">For drawings and pricing from plans: everything in Premium plus Design.</div>
+          <div class="price-cta-line">£49<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
+          <div class="price-cta-sub">or £490 + VAT a year (two months free)</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Premium</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>CAD drawings, as-fitted plans, zone plans, wiring and schematics</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Take-offs and pricing from your quantities</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Onboarding, quoted for your business</li>
+          </ul>
         </div>
       </div>
-      <p class="price-note">30-day free trial, no commitment, no card required. Compliar is in active development — early customers help shape what ships next.</p>
+
+      <div class="seat-calc" id="seatCalc" aria-label="Work out your price">
+        <h3>Work out your price</h3>
+        <div class="seat-calc-grid">
+          <label>Lite seats<input type="number" inputmode="numeric" min="0" max="500" value="5" data-price="20"></label>
+          <label>Pro seats<input type="number" inputmode="numeric" min="0" max="500" value="2" data-price="30"></label>
+          <label>Premium seats<input type="number" inputmode="numeric" min="0" max="500" value="0" data-price="38"></label>
+          <label>Design seats<input type="number" inputmode="numeric" min="0" max="500" value="1" data-price="49"></label>
+        </div>
+        <div class="seat-calc-out">
+          <div><span class="big" id="scMonth">£209</span> + VAT a month</div>
+          <div>or <span class="big" id="scYear">£2,090</span> + VAT a year, paid yearly (two months free)</div>
+        </div>
+      </div>
+
+      <p class="price-note">30-day free trial, no card required. Prices are per user per month, plus VAT. Compliar is in active development, and early customers help shape what ships next.</p>
     </div>
   </section>
 
@@ -1055,27 +1105,27 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>How much does Compliar cost?</summary>
-          <p>£105 + VAT a month covers your first 3 active users, then £35 + VAT per user after that — no tiers, no seat caps. You only pay for the users you actually have active, and every account starts with a 30-day free trial, no card required.</p>
+          <p>Compliar is priced per person, by seat: Lite £20, Pro £30, Premium £38 and Design £49 per user per month, plus VAT. Pay yearly and you get two months free. You can mix seats in one company, there is no minimum number of seats, and every account starts with a 30-day free trial, no card required.</p>
         </details>
         <details class="faq-item">
-          <summary>Is there an onboarding or setup fee?</summary>
-          <p>There's no fee built into your subscription, and onboarding is optional — but we recommend it. 10 hours of one-to-one onboarding and support (£649 + VAT flat) covers migrating your existing data, setting up certificate templates, and training your team, worked directly with the person who built Compliar. Any setup work or general support needed outside this package is quoted separately on request, and can take longer to arrange — so teams that skip onboarding sometimes see delays getting fully up and running.</p>
+          <summary>What does each seat include?</summary>
+          <p>Lite is for field engineers: calendar, jobs, customers, sites and assets, certificates, defects, quotes, reports and timesheets, with the field app. Pro adds the office desk: maintenance plans, invoicing and credit control, rates, stock, purchase orders and RAMS. Premium adds projects and tenders, job costing, advanced reports and your own certificate templates. Design adds drawings and take-offs. Each seat includes everything in the one below it.</p>
         </details>
         <details class="faq-item">
           <summary>What disciplines does Compliar cover?</summary>
           <p>19 disciplines across fire, security and electrical — fire alarm, intruder alarm, CCTV, access control, emergency lighting, electrical installation, EV charging, PAT testing and more, all in one system.</p>
         </details>
         <details class="faq-item">
-          <summary>Do the certificates comply with British Standards?</summary>
-          <p>Yes. Compliar's certificate templates are built to the relevant British Standards for each discipline — including BS 5839-1 (fire alarms), PD 6662 &amp; BS EN 62676 (intruder alarms &amp; CCTV), BS 5266-1 (emergency lighting) and BS 7671 (electrical installations) — kept up to date as standards are revised.</p>
+          <summary>Do the certificates follow British Standards?</summary>
+          <p>Compliar's certificate templates are built to follow the relevant British Standards for each discipline, and each one names the standard it follows. They include BS 5839-1 (fire alarms), PD 6662 &amp; BS EN 50131 (intruder alarms), BS EN 62676-4 (CCTV), BS 5266-1 (emergency lighting) and BS 7671 (electrical installations). The engineer who signs a certificate remains responsible for its content.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a contract or minimum commitment?</summary>
-          <p>No. Every account starts with a 30-day free trial, no card required, and you can cancel any time — you're billed monthly for exactly the users you have active.</p>
+          <p>No. Every account starts with a 30-day free trial, no card required, and there is no minimum term or minimum number of seats.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens to my bill if I remove a user?</summary>
-          <p>It drops automatically from your next billing cycle — no manual adjustments, no mid-cycle refunds to chase up.</p>
+          <summary>Can I use different seats in one company?</summary>
+          <p>Yes. Each person has their own seat, so you can put field engineers on Lite, the office on Pro, an estimator on Premium or Design, and change a person's seat later.</p>
         </details>
         <details class="faq-item">
           <summary>Is RAMS (risk assessments) available yet?</summary>
@@ -1087,7 +1137,7 @@
         </details>
         <details class="faq-item">
           <summary>Is there a mobile app?</summary>
-          <p>The field app runs in your phone's browser, so there is nothing to download from an app store. Technicians get a simplified view built for site work — status and timer, directions, parts, billable items and the certificates a job needs — without the office clutter.</p>
+          <p>The field app runs in your phone's browser, so there is nothing to download from an app store. Technicians get a simplified view built for site work: status and timer, directions, parts, billable items and the certificates a job needs, without the office clutter. It needs a mobile signal on site; an offline mode is in testing and is not switched on for customers yet.</p>
         </details>
         <details class="faq-item">
           <summary>Who can see my data?</summary>
@@ -1125,7 +1175,6 @@
       <ul>
         <li><a href="#features">Features</a></li>
         <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#compare">Compare</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
@@ -1183,6 +1232,29 @@
     grid.innerHTML = html;
   }
 
+  function seatCalc(){
+    var box = document.getElementById('seatCalc');
+    if(!box) return;
+    var inputs = box.querySelectorAll('input[data-price]');
+    var month = 0;
+    for (var i = 0; i < inputs.length; i++){
+      var n = parseInt(inputs[i].value, 10);
+      if (isNaN(n) || n < 0) n = 0;
+      if (n > 500) n = 500;
+      month += n * parseInt(inputs[i].getAttribute('data-price'), 10);
+    }
+    var fmt = function(v){ return '£' + v.toLocaleString('en-GB'); };
+    document.getElementById('scMonth').textContent = fmt(month);
+    document.getElementById('scYear').textContent = fmt(month * 10);
+  }
+  (function(){
+    var box = document.getElementById('seatCalc');
+    if(!box) return;
+    var inputs = box.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++){ inputs[i].addEventListener('input', seatCalc); }
+  })();
+
   calcBattery();
   buildCalendar();
+  seatCalc();
 </script>
