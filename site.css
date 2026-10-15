@@ -2811,3 +2811,7 @@ header.nav {
     text-align: center;
   }
 }
+
+.home-capabilities .eyebrow {
+  color: var(--orange-deep);
+}
