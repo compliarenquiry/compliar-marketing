@@ -1,380 +1,688 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fire Alarm Battery Calculator | BS 5839-1 — Compliar</title>
-<meta name="description" content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working.">
-<link rel="canonical" href="https://compliar.co.uk/fire-alarm-battery-calculator/">
-<meta name="theme-color" content="#1B2430">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231B2430'/%3E%3Cpath d='M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z' fill='%23E07B39'/%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Compliar">
-<meta property="og:title" content="Fire Alarm Battery Calculator | BS 5839-1 Standby Sizing — Compliar">
-<meta property="og:description" content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working.">
-<meta property="og:url" content="https://compliar.co.uk/fire-alarm-battery-calculator/">
-<meta property="og:image" content="https://compliar.co.uk/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Compliar — software for fire, security and electrical contractors">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://compliar.co.uk/og.png">
-<meta name="twitter:title" content="Fire Alarm Battery Calculator | BS 5839-1 Standby Sizing — Compliar">
-<meta name="twitter:description" content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working.">
-<script type="application/ld+json">
-[
- {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-   {
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Compliar",
-    "item": "https://compliar.co.uk/"
-   },
-   {
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Fire alarm battery calculator",
-    "item": "https://compliar.co.uk/fire-alarm-battery-calculator/"
-   }
-  ]
- },
- {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-   {
-    "@type": "Question",
-    "name": "How do I calculate the battery size for a fire alarm panel?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Add the energy needed for the standby period to the energy needed for the alarm period, then add a margin. In formula form: capacity in Ah = (quiescent current × standby hours + alarm current × alarm hours) × 1.25. Then choose the next standard battery size up. The calculator on this page does it for you and shows the working."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "How many hours of standby does a fire alarm battery need?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "It depends on the system design and how quickly a mains or battery fault can be dealt with. 24 hours is commonly used, with 72 hours where a fault could not be put right within a day. Always follow the specification for your system and BS 5839-1."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "How long must the batteries support the alarm?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Thirty minutes at full alarm load is the usual figure, which is the default here. Some specifications call for more or less, so the calculator lets you choose 15, 30 or 60 minutes."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Can I use this instead of a design calculation?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "No. It is a quick guide for engineers and installers. The design calculation, the manufacturer's current figures and the panel or power supply data take precedence, and the responsible person for the design signs off the final battery size."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Does Compliar do this automatically?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Yes. The fire alarm periodic inspection and servicing certificate in Compliar includes a standby battery capacity calculation, alongside the panel, power supply and battery readings, so it is recorded on the certificate."
-    }
-   }
-  ]
- },
- {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Fire alarm battery calculator",
-  "url": "https://compliar.co.uk/fire-alarm-battery-calculator/",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript",
-  "description": "Calculates fire alarm standby battery capacity in Ah from quiescent current, alarm current, standby period and alarm duration.",
-  "offers": {
-   "@type": "Offer",
-   "price": "0",
-   "priceCurrency": "GBP"
-  },
-  "publisher": {
-   "@type": "Organization",
-   "name": "Compliar",
-   "url": "https://compliar.co.uk/"
-  }
- }
-]
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
-</head>
-<body>
-
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="/">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z" fill="#E07B39"/>
-        <path d="M11 10H18V14H11L10 13V11L11 10Z" fill="#1B2430" opacity="0.55"/>
-      </svg>
-      Compliar
-    </a>
-    <ul class="nav-links">
-      <li><a href="/#features">Features</a></li>
-      <li><a href="/#certificates">Certificates</a></li>
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a class="btn btn-ghost-on-navy btn-sm" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Sign in</a>
-      <a class="btn btn-primary btn-sm" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero sub-hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="crumbs"><a href="/">Compliar</a><i>/</i>Fire alarm battery calculator</div>
-        <div class="eyebrow">Free tool</div>
-        <h1>Fire alarm battery <span>calculator</span></h1>
-        <p class="hero-sub">Work out the standby battery a fire alarm panel or power supply needs. Enter the quiescent and alarm currents, choose the standby period and alarm duration, and get the capacity in Ah plus the next standard sealed lead-acid size up.</p>
-        <ul class="hero-bullets">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The same sizing method built into Compliar's fire alarm servicing certificate</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Shows the working, so you can check it and note it on your certificate</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Runs in your browser — nothing you enter is stored</li>
-        </ul>
-        <div class="standards"><span>BS 5839-1</span></div>
-      </div>
-
-      <div class="calc-card">
-        <div class="calc-head">
-          <div class="calc-title">Battery sizing</div>
-          <div class="calc-badge">BS 5839-1 METHOD</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fire Alarm Battery Calculator | BS 5839-1 — Compliar</title>
+    <meta
+      name="description"
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+    />
+    <link
+      rel="canonical"
+      href="https://compliar.co.uk/fire-alarm-battery-calculator/"
+    />
+    <meta name="theme-color" content="#1B2430" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231B2430'/%3E%3Cpath d='M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z' fill='%23E07B39'/%3E%3C/svg%3E"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Compliar" />
+    <meta
+      property="og:title"
+      content="Fire Alarm Battery Calculator | BS 5839-1 Standby Sizing — Compliar"
+    />
+    <meta
+      property="og:description"
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+    />
+    <meta
+      property="og:url"
+      content="https://compliar.co.uk/fire-alarm-battery-calculator/"
+    />
+    <meta property="og:image" content="https://compliar.co.uk/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Compliar — software for fire, security and electrical contractors"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://compliar.co.uk/og.png" />
+    <meta
+      name="twitter:title"
+      content="Fire Alarm Battery Calculator | BS 5839-1 Standby Sizing — Compliar"
+    />
+    <meta
+      name="twitter:description"
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+    />
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Compliar",
+              "item": "https://compliar.co.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Fire alarm battery calculator",
+              "item": "https://compliar.co.uk/fire-alarm-battery-calculator/"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate the battery size for a fire alarm panel?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Add the energy needed for the standby period to the energy needed for the alarm period, then add a margin. In formula form: capacity in Ah = (quiescent current × standby hours + alarm current × alarm hours) × 1.25. Then choose the next standard battery size up. The calculator on this page does it for you and shows the working."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many hours of standby does a fire alarm battery need?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It depends on the system design and how quickly a mains or battery fault can be dealt with. 24 hours is commonly used, with 72 hours where a fault could not be put right within a day. Always follow the specification for your system and BS 5839-1."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long must the batteries support the alarm?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Thirty minutes at full alarm load is the usual figure, which is the default here. Some specifications call for more or less, so the calculator lets you choose 15, 30 or 60 minutes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use this instead of a design calculation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. It is a quick guide for engineers and installers. The design calculation, the manufacturer's current figures and the panel or power supply data take precedence, and the responsible person for the design signs off the final battery size."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Compliar do this automatically?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The fire alarm periodic inspection and servicing certificate in Compliar includes a standby battery capacity calculation, alongside the panel, power supply and battery readings, so it is recorded on the certificate."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Fire alarm battery calculator",
+          "url": "https://compliar.co.uk/fire-alarm-battery-calculator/",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "description": "Calculates fire alarm standby battery capacity in Ah from quiescent current, alarm current, standby period and alarm duration.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "GBP"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Compliar",
+            "url": "https://compliar.co.uk/"
+          }
+        }
+      ]
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/site.css" />
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/" aria-label="Compliar home"
+          ><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z"
+              fill="#E07B39"
+            /></svg
+          >Compliar</a
+        >
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faqs/">FAQs</a></li>
+            <li><a href="/resources/" aria-current="location">Resources</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <a
+            class="sign-in"
+            href="https://app.compliar.co.uk"
+            target="_blank"
+            rel="noopener"
+            >Sign in</a
+          ><a
+            class="btn btn-primary btn-sm"
+            href="https://app.compliar.co.uk"
+            target="_blank"
+            rel="noopener"
+            >Start free <span aria-hidden="true">↗</span></a
+          >
         </div>
-        <div class="calc-desc">Enter your system's currents and periods. Nothing is stored or sent anywhere.</div>
-
-        <div class="calc-row">
-          <label for="iq">Quiescent current <span class="val"><span id="iqVal">180</span> mA</span></label>
-          <input type="range" id="iq" min="20" max="1000" step="5" value="180" oninput="calcBattery()">
-        </div>
-        <div class="calc-row">
-          <label for="ia">Alarm current <span class="val"><span id="iaVal">1.2</span> A</span></label>
-          <input type="range" id="ia" min="0.2" max="10" step="0.1" value="1.2" oninput="calcBattery()">
-        </div>
-        <div class="calc-row">
-          <label for="sb">Standby period</label>
-          <select id="sb" onchange="calcBattery()">
-            <option value="24" selected>24 hours</option>
-            <option value="72">72 hours</option>
-          </select>
-        </div>
-        <div class="calc-row">
-          <label for="al">Alarm duration</label>
-          <select id="al" onchange="calcBattery()">
-            <option value="15">15 minutes</option>
-            <option value="30" selected>30 minutes</option>
-            <option value="60">60 minutes</option>
-          </select>
-        </div>
-
-        <div class="calc-result">
-          <div class="lbl">Recommended battery<span class="need" id="needOut">Calculated: 6.15 Ah</span></div>
-          <div><span class="out" id="sizeOut">7</span><span class="unit">Ah</span></div>
-        </div>
-        <div class="calc-work" id="workOut"></div>
-        <div class="calc-note">Illustrative guide only. Use the manufacturer's current figures for every device, and confirm the result against your design specification and BS 5839-1.</div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- HOW IT WORKS -->
-  <section class="band">
-    <div class="wrap">
-      <div class="prose">
-        <div class="eyebrow" style="color:var(--orange-deep);">The method</div>
-        <h2>How fire alarm battery capacity is worked out</h2>
-        <p>If mains power fails, the standby batteries in a fire alarm panel or power supply unit have to do two jobs. First they keep the whole system running for the standby period, with every device drawing its normal quiescent current. Then they have to supply the full alarm load, with sounders and any other devices operating, for long enough to give a proper evacuation warning. The battery has to be big enough for both, with an allowance on top for ageing and temperature.</p>
-        <div class="formula">Capacity (Ah) = ( Iq × T<sub>standby</sub> + Ia × T<sub>alarm</sub> ) × 1.25</div>
-        <ul>
-          <li><strong>Iq</strong> is the quiescent current in amps: everything the system draws with no alarm active, including the panel itself, detectors, interfaces and any ancillary equipment.</li>
-          <li><strong>T<sub>standby</sub></strong> is the standby period in hours. 24 hours and 72 hours are the usual choices; your design specification and BS 5839-1 decide which applies.</li>
-          <li><strong>Ia</strong> is the alarm current in amps with the system in alarm and all the devices that operate in an alarm drawing current.</li>
-          <li><strong>T<sub>alarm</sub></strong> is the alarm duration in hours. Thirty minutes (0.5 h) is the usual figure.</li>
-          <li><strong>1.25</strong> is a 25% allowance for battery ageing and temperature, a commonly used design margin.</li>
-        </ul>
-        <h3>Worked example</h3>
-        <p>A system with a quiescent current of 180 mA and an alarm current of 1.2 A, on a 24 hour standby with a 30 minute alarm:</p>
-        <div class="formula">( 0.18 A × 24 h + 1.2 A × 0.5 h ) × 1.25<br>= ( 4.32 + 0.60 ) × 1.25 = 6.15 Ah</div>
-        <p>The next standard size up is a 7 Ah battery. Change the standby period to 72 hours and the same system needs ( 0.18 × 72 + 0.6 ) × 1.25 = 16.95 Ah, so a 17 Ah battery. The standby period is usually what drives the size.</p>
-        <h3>Standard battery sizes</h3>
-        <p>The calculator rounds up to the next common sealed lead-acid (VRLA) size:</p>
-        <div class="size-chips"><span>2.1 Ah</span><span>3.2 Ah</span><span>7 Ah</span><span>12 Ah</span><span>17 Ah</span><span>24 Ah</span><span>26 Ah</span><span>38 Ah</span><span>65 Ah</span></div>
-        <p style="font-size:0.92rem;color:var(--muted);">Panels with a 24 V supply normally use two 12 V batteries wired in series. The capacity in Ah is the same for each battery, so you still size to the figure above.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIMITS -->
-  <section class="band" style="background:var(--cream-2);">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Before you rely on the number</div>
-        <h2>What a calculator can't know</h2>
-        <p>The sum is simple. Getting the inputs right is where batteries end up undersized.</p>
-      </div>
-      <div class="card-grid">
-        <div class="roadmap-card">
-          <h4>Real current figures</h4>
-          <p>Take the quiescent and alarm currents from the manufacturer's data for every device on the system, including loop devices, sounders, interfaces and ancillaries. An estimated quiescent current is the most common reason a battery turns out too small.</p>
-        </div>
-        <div class="roadmap-card">
-          <h4>Charger limits</h4>
-          <p>The panel or power supply has to recharge the batteries within the required time, and many have a maximum battery size they can charge. Check the manufacturer's data before specifying a larger battery.</p>
-        </div>
-        <div class="roadmap-card">
-          <h4>Your specification</h4>
-          <p>The standby and alarm periods come from the design, the system category and how quickly a fault can be put right. This tool is a guide for engineers, not a substitute for the design calculation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPLIAR TIE-IN -->
-  <section class="band">
-    <div class="wrap">
-      <div class="prose">
-        <div class="eyebrow" style="color:var(--orange-deep);">In the field</div>
-        <h2>Record the battery calculation on the certificate</h2>
-        <p>Compliar's fire alarm periodic inspection and servicing certificate has a standby battery capacity calculation section next to the panel, PSU and battery readings, so the maths and the measured values sit together on the same document. The certificate goes to your customer as a branded PDF the same day.</p>
-        <div class="more-links">
-          <a href="/fire-alarm-certificate-software/">Fire alarm certificate software</a>
-          <a href="/eicr-and-electrical-certificate-software/">EICR &amp; electrical certificates</a>
-          <a href="/#features">All features</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="band faq" id="faq">
-    <div class="wrap">
-      <div class="section-head center">
-        <div class="eyebrow">FAQ</div>
-        <h2>Common questions</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>How do I calculate the battery size for a fire alarm panel?</summary>
-          <p>Add the energy needed for the standby period to the energy needed for the alarm period, then add a margin. In formula form: capacity in Ah = (quiescent current × standby hours + alarm current × alarm hours) × 1.25. Then choose the next standard battery size up. The calculator on this page does it for you and shows the working.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How many hours of standby does a fire alarm battery need?</summary>
-          <p>It depends on the system design and how quickly a mains or battery fault can be dealt with. 24 hours is commonly used, with 72 hours where a fault could not be put right within a day. Always follow the specification for your system and BS 5839-1.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How long must the batteries support the alarm?</summary>
-          <p>Thirty minutes at full alarm load is the usual figure, which is the default here. Some specifications call for more or less, so the calculator lets you choose 15, 30 or 60 minutes.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I use this instead of a design calculation?</summary>
-          <p>No. It is a quick guide for engineers and installers. The design calculation, the manufacturer's current figures and the panel or power supply data take precedence, and the responsible person for the design signs off the final battery size.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Does Compliar do this automatically?</summary>
-          <p>Yes. The fire alarm periodic inspection and servicing certificate in Compliar includes a standby battery capacity calculation, alongside the panel, power supply and battery readings, so it is recorded on the certificate.</p>
+        <details class="mobile-menu">
+          <summary aria-label="Toggle navigation menu">
+            Menu <span aria-hidden="true">☰</span>
+          </summary>
+          <nav aria-label="Mobile navigation">
+            <ul>
+              <li><a href="/features/">Features</a></li>
+              <li><a href="/pricing/">Pricing</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/faqs/">FAQs</a></li>
+              <li>
+                <a href="/resources/" aria-current="location">Resources</a>
+              </li>
+              <li>
+                <a
+                  href="https://app.compliar.co.uk"
+                  target="_blank"
+                  rel="noopener"
+                  >Sign in ↗</a
+                >
+              </li>
+            </ul>
+          </nav>
         </details>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta band">
-    <div class="wrap">
-      <h2>Battery sizing, built into your certificates</h2>
-      <p>Compliar records the standby battery calculation on the fire alarm servicing certificate and sends the PDF to your customer. 30 days free, no card required.</p>
-      <div class="final-ctas">
-        <a class="btn btn-primary" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free</a>
-        <a class="btn btn-ghost-on-navy" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20demo%20request">Book a demo</a>
+    <main id="main">
+      <section class="hero sub-hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="crumbs">
+              <a href="/">Compliar</a><i>/</i>Fire alarm battery calculator
+            </div>
+            <div class="eyebrow">Free tool</div>
+            <h1>Fire alarm battery <span>calculator</span></h1>
+            <p class="hero-sub">
+              Work out the standby battery a fire alarm panel or power supply
+              needs. Enter the quiescent and alarm currents, choose the standby
+              period and alarm duration, and get the capacity in Ah plus the
+              next standard sealed lead-acid size up.
+            </p>
+            <ul class="hero-bullets">
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12l5 5L20 6"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+                >The same sizing method built into Compliar's fire alarm
+                servicing certificate
+              </li>
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12l5 5L20 6"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+                >Shows the working, so you can check it and note it on your
+                certificate
+              </li>
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12l5 5L20 6"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+                >Runs in your browser — nothing you enter is stored
+              </li>
+            </ul>
+            <div class="standards"><span>BS 5839-1</span></div>
+          </div>
+
+          <div class="calc-card">
+            <div class="calc-head">
+              <div class="calc-title">Battery sizing</div>
+              <div class="calc-badge">BS 5839-1 METHOD</div>
+            </div>
+            <div class="calc-desc">
+              Enter your system's currents and periods. Nothing is stored or
+              sent anywhere.
+            </div>
+
+            <div class="calc-row">
+              <label for="iq"
+                >Quiescent current
+                <span class="val"><span id="iqVal">180</span> mA</span></label
+              >
+              <input
+                type="range"
+                id="iq"
+                min="20"
+                max="1000"
+                step="5"
+                value="180"
+                oninput="calcBattery()"
+              />
+            </div>
+            <div class="calc-row">
+              <label for="ia"
+                >Alarm current
+                <span class="val"><span id="iaVal">1.2</span> A</span></label
+              >
+              <input
+                type="range"
+                id="ia"
+                min="0.2"
+                max="10"
+                step="0.1"
+                value="1.2"
+                oninput="calcBattery()"
+              />
+            </div>
+            <div class="calc-row">
+              <label for="sb">Standby period</label>
+              <select id="sb" onchange="calcBattery()">
+                <option value="24" selected>24 hours</option>
+                <option value="72">72 hours</option>
+              </select>
+            </div>
+            <div class="calc-row">
+              <label for="al">Alarm duration</label>
+              <select id="al" onchange="calcBattery()">
+                <option value="15">15 minutes</option>
+                <option value="30" selected>30 minutes</option>
+                <option value="60">60 minutes</option>
+              </select>
+            </div>
+
+            <div class="calc-result">
+              <div class="lbl">
+                Recommended battery<span class="need" id="needOut"
+                  >Calculated: 6.15 Ah</span
+                >
+              </div>
+              <div>
+                <span class="out" id="sizeOut">7</span
+                ><span class="unit">Ah</span>
+              </div>
+            </div>
+            <div class="calc-work" id="workOut"></div>
+            <div class="calc-note">
+              Illustrative guide only. Use the manufacturer's current figures
+              for every device, and confirm the result against your design
+              specification and BS 5839-1.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="band">
+        <div class="wrap">
+          <div class="prose">
+            <div class="eyebrow" style="color: var(--orange-deep)">
+              The method
+            </div>
+            <h2>How fire alarm battery capacity is worked out</h2>
+            <p>
+              If mains power fails, the standby batteries in a fire alarm panel
+              or power supply unit have to do two jobs. First they keep the
+              whole system running for the standby period, with every device
+              drawing its normal quiescent current. Then they have to supply the
+              full alarm load, with sounders and any other devices operating,
+              for long enough to give a proper evacuation warning. The battery
+              has to be big enough for both, with an allowance on top for ageing
+              and temperature.
+            </p>
+            <div class="formula">
+              Capacity (Ah) = ( Iq × T<sub>standby</sub> + Ia × T<sub
+                >alarm</sub
+              >
+              ) × 1.25
+            </div>
+            <ul>
+              <li>
+                <strong>Iq</strong> is the quiescent current in amps: everything
+                the system draws with no alarm active, including the panel
+                itself, detectors, interfaces and any ancillary equipment.
+              </li>
+              <li>
+                <strong>T<sub>standby</sub></strong> is the standby period in
+                hours. 24 hours and 72 hours are the usual choices; your design
+                specification and BS 5839-1 decide which applies.
+              </li>
+              <li>
+                <strong>Ia</strong> is the alarm current in amps with the system
+                in alarm and all the devices that operate in an alarm drawing
+                current.
+              </li>
+              <li>
+                <strong>T<sub>alarm</sub></strong> is the alarm duration in
+                hours. Thirty minutes (0.5 h) is the usual figure.
+              </li>
+              <li>
+                <strong>1.25</strong> is a 25% allowance for battery ageing and
+                temperature, a commonly used design margin.
+              </li>
+            </ul>
+            <h3>Worked example</h3>
+            <p>
+              A system with a quiescent current of 180 mA and an alarm current
+              of 1.2 A, on a 24 hour standby with a 30 minute alarm:
+            </p>
+            <div class="formula">
+              ( 0.18 A × 24 h + 1.2 A × 0.5 h ) × 1.25<br />= ( 4.32 + 0.60 ) ×
+              1.25 = 6.15 Ah
+            </div>
+            <p>
+              The next standard size up is a 7 Ah battery. Change the standby
+              period to 72 hours and the same system needs ( 0.18 × 72 + 0.6 ) ×
+              1.25 = 16.95 Ah, so a 17 Ah battery. The standby period is usually
+              what drives the size.
+            </p>
+            <h3>Standard battery sizes</h3>
+            <p>
+              The calculator rounds up to the next common sealed lead-acid
+              (VRLA) size:
+            </p>
+            <div class="size-chips">
+              <span>2.1 Ah</span><span>3.2 Ah</span><span>7 Ah</span
+              ><span>12 Ah</span><span>17 Ah</span><span>24 Ah</span
+              ><span>26 Ah</span><span>38 Ah</span><span>65 Ah</span>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--muted)">
+              Panels with a 24 V supply normally use two 12 V batteries wired in
+              series. The capacity in Ah is the same for each battery, so you
+              still size to the figure above.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIMITS -->
+      <section class="band" style="background: var(--cream-2)">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="eyebrow">Before you rely on the number</div>
+            <h2>What a calculator can't know</h2>
+            <p>
+              The sum is simple. Getting the inputs right is where batteries end
+              up undersized.
+            </p>
+          </div>
+          <div class="card-grid">
+            <div class="roadmap-card">
+              <h4>Real current figures</h4>
+              <p>
+                Take the quiescent and alarm currents from the manufacturer's
+                data for every device on the system, including loop devices,
+                sounders, interfaces and ancillaries. An estimated quiescent
+                current is the most common reason a battery turns out too small.
+              </p>
+            </div>
+            <div class="roadmap-card">
+              <h4>Charger limits</h4>
+              <p>
+                The panel or power supply has to recharge the batteries within
+                the required time, and many have a maximum battery size they can
+                charge. Check the manufacturer's data before specifying a larger
+                battery.
+              </p>
+            </div>
+            <div class="roadmap-card">
+              <h4>Your specification</h4>
+              <p>
+                The standby and alarm periods come from the design, the system
+                category and how quickly a fault can be put right. This tool is
+                a guide for engineers, not a substitute for the design
+                calculation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPLIAR TIE-IN -->
+      <section class="band">
+        <div class="wrap">
+          <div class="prose">
+            <div class="eyebrow" style="color: var(--orange-deep)">
+              In the field
+            </div>
+            <h2>Record the battery calculation on the certificate</h2>
+            <p>
+              Compliar's fire alarm periodic inspection and servicing
+              certificate has a standby battery capacity calculation section
+              next to the panel, PSU and battery readings, so the maths and the
+              measured values sit together on the same document. The certificate
+              goes to your customer as a branded PDF the same day.
+            </p>
+            <div class="more-links">
+              <a href="/fire-alarm-certificate-software/"
+                >Fire alarm certificate software</a
+              >
+              <a href="/eicr-and-electrical-certificate-software/"
+                >EICR &amp; electrical certificates</a
+              >
+              <a href="/features/">All features</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="band faq" id="faq">
+        <div class="wrap">
+          <div class="section-head center">
+            <div class="eyebrow">FAQ</div>
+            <h2>Common questions</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>
+                How do I calculate the battery size for a fire alarm panel?
+              </summary>
+              <p>
+                Add the energy needed for the standby period to the energy
+                needed for the alarm period, then add a margin. In formula form:
+                capacity in Ah = (quiescent current × standby hours + alarm
+                current × alarm hours) × 1.25. Then choose the next standard
+                battery size up. The calculator on this page does it for you and
+                shows the working.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>
+                How many hours of standby does a fire alarm battery need?
+              </summary>
+              <p>
+                It depends on the system design and how quickly a mains or
+                battery fault can be dealt with. 24 hours is commonly used, with
+                72 hours where a fault could not be put right within a day.
+                Always follow the specification for your system and BS 5839-1.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>How long must the batteries support the alarm?</summary>
+              <p>
+                Thirty minutes at full alarm load is the usual figure, which is
+                the default here. Some specifications call for more or less, so
+                the calculator lets you choose 15, 30 or 60 minutes.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I use this instead of a design calculation?</summary>
+              <p>
+                No. It is a quick guide for engineers and installers. The design
+                calculation, the manufacturer's current figures and the panel or
+                power supply data take precedence, and the responsible person
+                for the design signs off the final battery size.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>Does Compliar do this automatically?</summary>
+              <p>
+                Yes. The fire alarm periodic inspection and servicing
+                certificate in Compliar includes a standby battery capacity
+                calculation, alongside the panel, power supply and battery
+                readings, so it is recorded on the certificate.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta band">
+        <div class="wrap">
+          <h2>Battery sizing, built into your certificates</h2>
+          <p>
+            Compliar records the standby battery calculation on the fire alarm
+            servicing certificate and sends the PDF to your customer. 30 days
+            free, no card required.
+          </p>
+          <div class="final-ctas">
+            <a
+              class="btn btn-primary"
+              href="https://app.compliar.co.uk"
+              target="_blank"
+              rel="noopener"
+              >Start free</a
+            >
+            <a class="btn btn-ghost-on-navy" href="/contact/">Arrange a demo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <a class="foot-brand" href="/"
+            ><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z"
+                fill="#E07B39"
+              /></svg
+            >Compliar</a
+          >
+          <p class="footer-intro">
+            Less admin. More time for the job.<br />Built for UK fire, security
+            &amp; electrical contractors.
+          </p>
+        </div>
+        <div class="foot-col">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="/getting-started/">Getting started</a></li>
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faqs/">FAQs</a></li>
+            <li><a href="/resources/">Resources</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h2>Guides &amp; tools</h2>
+          <ul>
+            <li>
+              <a href="/fire-alarm-battery-calculator/">Battery calculator</a>
+            </li>
+            <li>
+              <a href="/fire-alarm-certificate-software/"
+                >Fire alarm certificates</a
+              >
+            </li>
+            <li>
+              <a href="/eicr-and-electrical-certificate-software/"
+                >Electrical certificates</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h2>Let's talk</h2>
+          <ul>
+            <li>
+              <a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a>
+            </li>
+            <li>
+              <a href="/contact/">Contact &amp; demos ↗</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap foot-grid">
-    <div>
-      <div class="foot-brand">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z" fill="#E07B39"/></svg>
-        Compliar
+      <div class="wrap foot-bottom">
+        <span>© 2026 COMPLIAR LTD · Built in the UK</span
+        ><span>Company number: 17519777</span>
       </div>
-      <p style="max-width:34ch;font-size:0.88rem;color:var(--muted-on-navy);">The system that runs a fire, security &amp; electrical company — certificates across nineteen disciplines, scheduling, quotes, invoicing, reporting, assets and stock, built around how the work actually happens.</p>
-    </div>
-    <div class="foot-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="/#features">Features</a></li>
-        <li><a href="/#certificates">Certificates</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/#faq">FAQ</a></li>
-        <li><a href="/#roadmap">Roadmap</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Guides &amp; tools</h5>
-      <ul>
-        <li><a href="/fire-alarm-battery-calculator/">Fire alarm battery calculator</a></li>
-        <li><a href="/fire-alarm-certificate-software/">Fire alarm certificate software</a></li>
-        <li><a href="/eicr-and-electrical-certificate-software/">EICR &amp; electrical certificates</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Get in touch</h5>
-      <ul>
-        <li><a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a></li>
-        <li><a href="https://app.compliar.co.uk" target="_blank" rel="noopener">Sign in to Compliar</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="wrap foot-bottom">
-    <span>© 2026 COMPLIAR · BUILT IN THE UK</span>
-    <span>BS 5839-1 · PD 6662 · BS 5266-1 · BS EN 62676 · BS 7671</span>
-  </div>
-</footer>
-<script>
-  function calcBattery(){
-    var iq = parseFloat(document.getElementById('iq').value);   // mA
-    var ia = parseFloat(document.getElementById('ia').value);   // A
-    var sb = parseFloat(document.getElementById('sb').value);   // hours
-    var al = parseFloat(document.getElementById('al').value) / 60; // hours
-    document.getElementById('iqVal').textContent = iq;
-    document.getElementById('iaVal').textContent = ia.toFixed(1);
+    </footer>
+    <script>
+      function calcBattery() {
+        var iq = parseFloat(document.getElementById("iq").value); // mA
+        var ia = parseFloat(document.getElementById("ia").value); // A
+        var sb = parseFloat(document.getElementById("sb").value); // hours
+        var al = parseFloat(document.getElementById("al").value) / 60; // hours
+        document.getElementById("iqVal").textContent = iq;
+        document.getElementById("iaVal").textContent = ia.toFixed(1);
 
-    var iqA = iq / 1000;
-    var ah = ((iqA * sb) + (ia * al)) * 1.25;
+        var iqA = iq / 1000;
+        var ah = (iqA * sb + ia * al) * 1.25;
 
-    var sizes = [2.1, 3.2, 7, 12, 17, 24, 26, 38, 65];
-    var chosen = null;
-    for (var i = 0; i < sizes.length; i++){
-      if (ah <= sizes[i]) { chosen = sizes[i]; break; }
-    }
-    document.getElementById('needOut').textContent = 'Calculated: ' + ah.toFixed(2) + ' Ah';
-    document.getElementById('sizeOut').textContent = chosen === null ? '65+' : chosen;
-    var work = '(' + iqA.toFixed(3) + ' A × ' + sb + ' h + ' + ia.toFixed(1) + ' A × ' + al.toFixed(2) + ' h) × 1.25 = ' + ah.toFixed(2) + ' Ah';
-    if (chosen === null) work += ' — above 65 Ah: use a larger power supply or split the load.';
-    document.getElementById('workOut').textContent = work;
-  }
-  calcBattery();
-</script>
-</body>
+        var sizes = [2.1, 3.2, 7, 12, 17, 24, 26, 38, 65];
+        var chosen = null;
+        for (var i = 0; i < sizes.length; i++) {
+          if (ah <= sizes[i]) {
+            chosen = sizes[i];
+            break;
+          }
+        }
+        document.getElementById("needOut").textContent =
+          "Calculated: " + ah.toFixed(2) + " Ah";
+        document.getElementById("sizeOut").textContent =
+          chosen === null ? "65+" : chosen;
+        var work =
+          "(" +
+          iqA.toFixed(3) +
+          " A × " +
+          sb +
+          " h + " +
+          ia.toFixed(1) +
+          " A × " +
+          al.toFixed(2) +
+          " h) × 1.25 = " +
+          ah.toFixed(2) +
+          " Ah";
+        if (chosen === null)
+          work +=
+            " — above 65 Ah: use a larger power supply or split the load.";
+        document.getElementById("workOut").textContent = work;
+      }
+      calcBattery();
+    </script>
+  </body>
 </html>

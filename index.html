@@ -1,1260 +1,402 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compliar — Fire, Security &amp; Electrical Contractor Software</title>
-<meta name="description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
-<link rel="canonical" href="https://compliar.co.uk/">
-<meta name="theme-color" content="#1B2430">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231B2430'/%3E%3Cpath d='M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z' fill='%23E07B39'/%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Compliar">
-<meta property="og:title" content="Compliar — Software for fire, security &amp; electrical contractors">
-<meta property="og:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
-<meta property="og:url" content="https://compliar.co.uk/">
-<meta property="og:image" content="https://compliar.co.uk/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Compliar — software for fire, security and electrical contractors">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://compliar.co.uk/og.png">
-<meta name="twitter:title" content="Compliar — Software for fire, security &amp; electrical contractors">
-<meta name="twitter:description" content="Scheduling, certificates in 19 disciplines, quotes, invoices, projects and job costing for UK fire, security and electrical contractors. Priced per person from £20 + VAT a user a month. 30-day free trial, no card.">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Compliar",
-  "url": "https://compliar.co.uk/",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web browser",
-  "description": "Job management, scheduling, certificates, quoting, invoicing, projects and job costing software for UK fire, security and electrical contractors.",
-  "offers": {
-    "@type": "AggregateOffer",
-    "lowPrice": "20.00",
-    "highPrice": "49.00",
-    "priceCurrency": "GBP",
-    "offerCount": "4",
-    "description": "Per user per month plus VAT: Lite £20, Pro £30, Premium £38, Design £49. Two months free when paid yearly. 30-day free trial, no card required."
-  }
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#1B2430;
-    --navy-2:#232E3D;
-    --navy-3:#141B24;
-    --cream:#F7F5F0;
-    --cream-2:#EFEBE2;
-    --ink:#1B2430;
-    --muted:#5C6773;
-    --muted-on-navy:#9CA8B8;
-    --line:#E4E0D8;
-    --line-on-navy:#33404F;
-    --orange:#E07B39;
-    --orange-deep:#C4611F;
-    --orange-tint:#FBE9DB;
-    --good:#3F8F5F;
-  }
-
-  *{box-sizing:border-box;}
-  body{
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
-    padding-left:max(16px, env(safe-area-inset-left,0px));
-    padding-right:max(16px, env(safe-area-inset-right,0px));
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.display{
-    font-family:'Oswald',system-ui,sans-serif;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    font-weight:700;
-    text-wrap:balance;
-    margin:0;
-  }
-  p{margin:0;line-height:1.6;}
-  a{color:inherit;}
-  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;}
-  .wrap{max-width:1120px;margin:0 auto;}
-  .band{padding-block:88px;}
-  .band-tight{padding-block:56px;}
-  @media (max-width:640px){
-    .band{padding-block:56px;}
-    .band-tight{padding-block:40px;}
-  }
-
-  /* ---------- nav ---------- */
-  header.nav{
-    position:sticky;
-    top:env(safe-area-inset-top,0px);
-    z-index:50;
-    background:rgba(27,36,48,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line-on-navy);
-  }
-  .nav-inner{
-    max-width:1120px;margin:0 auto;
-    display:flex;align-items:center;justify-content:space-between;
-    padding-block:16px;
-    gap:16px;
-  }
-  .brand{
-    display:flex;align-items:center;gap:10px;
-    font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:1.15rem;letter-spacing:0.06em;
-    color:#fff;text-decoration:none;
-    text-transform:uppercase;
-    white-space:nowrap;
-  }
-  .brand svg{flex:none;}
-  .nav-links{
-    display:flex;gap:28px;align-items:center;
-    list-style:none;margin:0;padding:0;
-  }
-  .nav-links a{
-    color:var(--muted-on-navy);text-decoration:none;font-size:0.92rem;
-    transition:color .15s;
-  }
-  .nav-links a:hover{color:#fff;}
-  .nav-cta{display:flex;gap:10px;align-items:center;}
-  @media (max-width:760px){
-    .nav-links{display:none;}
-  }
-
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:12px 22px;
-    border-radius:3px;
-    font-family:'Inter',sans-serif;font-weight:600;font-size:0.92rem;
-    text-decoration:none;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:transform .12s ease, background .15s, border-color .15s, color .15s;
-    white-space:nowrap;
-  }
-  .btn:active{transform:translateY(1px);}
-  .btn-primary{background:var(--orange);color:#fff;}
-  .btn-primary:hover{background:var(--orange-deep);}
-  .btn-ghost-on-navy{background:transparent;color:#fff;border-color:var(--line-on-navy);}
-  .btn-ghost-on-navy:hover{border-color:#fff;}
-  .btn-ghost-on-cream{background:transparent;color:var(--ink);border-color:var(--line);}
-  .btn-ghost-on-cream:hover{border-color:var(--ink);}
-  .btn-sm{padding:9px 16px;font-size:0.85rem;}
-
-  /* ---------- hero ---------- */
-  .hero{
-    background:
-      radial-gradient(1100px 480px at 12% -10%, rgba(224,123,57,0.16), transparent 60%),
-      var(--navy);
-    color:#fff;
-    padding-top:72px;
-    padding-bottom:0;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    gap:56px;
-    align-items:center;
-    padding-block:56px 0;
-  }
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:40px;}
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    color:var(--orange);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
-    margin-bottom:18px;
-  }
-  .eyebrow::before{
-    content:"";width:18px;height:1px;background:var(--orange);
-  }
-  .hero h1{
-    font-size:clamp(2.4rem, 5.2vw, 3.9rem);
-    line-height:1.03;
-    color:#fff;
-  }
-  .hero h1 span{color:var(--orange);}
-  .hero-sub{
-    margin-top:22px;
-    max-width:46ch;
-    font-size:1.08rem;
-    color:var(--muted-on-navy);
-  }
-  .hero-ctas{
-    display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;
-  }
-  .standards{
-    margin-top:44px;
-    display:flex;gap:22px;flex-wrap:wrap;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.76rem;letter-spacing:0.06em;
-    color:var(--muted-on-navy);
-    border-top:1px solid var(--line-on-navy);
-    padding-top:18px;
-  }
-
-  /* ---------- battery calc widget ---------- */
-  .calc-card{
-    background:var(--navy-2);
-    border:1px solid var(--line-on-navy);
-    border-radius:6px;
-    padding:26px;
-    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
-  }
-  .calc-head{
-    display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:6px;
-  }
-  .calc-title{
-    font-family:'Oswald',sans-serif;text-transform:uppercase;
-    font-size:0.95rem;letter-spacing:0.04em;color:#fff;
-  }
-  .calc-badge{
-    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;
-    color:var(--good);background:rgba(63,143,95,0.15);
-    border:1px solid rgba(63,143,95,0.4);
-    padding:3px 8px;border-radius:20px;letter-spacing:0.04em;
-  }
-  .calc-desc{color:var(--muted-on-navy);font-size:0.85rem;margin-top:6px;margin-bottom:22px;}
-  .calc-row{margin-bottom:18px;}
-  .calc-row label{
-    display:flex;justify-content:space-between;
-    font-size:0.82rem;color:var(--muted-on-navy);margin-bottom:8px;
-  }
-  .calc-row label .val{color:#fff;font-family:'IBM Plex Mono',monospace;}
-  .calc-row input[type=range]{
-    width:100%;accent-color:var(--orange);height:4px;
-  }
-  .calc-result{
-    margin-top:22px;padding-top:20px;border-top:1px solid var(--line-on-navy);
-    display:flex;align-items:baseline;justify-content:space-between;
-  }
-  .calc-result .lbl{font-size:0.8rem;color:var(--muted-on-navy);}
-  .calc-result .out{
-    font-family:'IBM Plex Mono',monospace;font-size:1.9rem;color:var(--orange);font-weight:600;
-  }
-  .calc-result .unit{font-size:0.95rem;color:var(--muted-on-navy);margin-left:4px;}
-  .calc-note{margin-top:14px;font-size:0.72rem;color:var(--muted-on-navy);opacity:0.8;}
-
-  /* ---------- section headers ---------- */
-  .section-head{max-width:640px;margin-bottom:48px;}
-  .section-head .eyebrow{color:var(--orange-deep);}
-  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--ink);}
-  .section-head p{margin-top:14px;color:var(--muted);font-size:1.02rem;max-width:56ch;}
-  .section-head.on-navy h2{color:#fff;}
-  .section-head.on-navy p{color:var(--muted-on-navy);}
-  .section-head.on-navy .eyebrow{color:var(--orange);}
-  .center{text-align:center;margin-left:auto;margin-right:auto;}
-
-  /* ---------- why band ---------- */
-  .why{background:var(--cream);}
-  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-  @media (max-width:840px){.why-grid{grid-template-columns:1fr;}}
-  .why-copy p + p{margin-top:16px;}
-  .why-copy{color:var(--ink);font-size:1.02rem;}
-  .why-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
-  .why-stat{background:var(--cream);padding:22px;}
-  .why-stat .n{font-family:'Oswald',sans-serif;font-size:2rem;color:var(--orange-deep);}
-  .why-stat .l{font-size:0.82rem;color:var(--muted);margin-top:6px;}
-
-  /* ---------- features ---------- */
-  .feature-row{
-    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
-    padding-block:64px;
-    border-top:1px solid var(--line);
-  }
-  .feature-row:first-of-type{border-top:none;}
-  .feature-row.reverse .feat-copy{order:2;}
-  .feature-row.reverse .feat-visual{order:1;}
-  @media (max-width:860px){
-    .feature-row, .feature-row.reverse{grid-template-columns:1fr;gap:32px;}
-    .feature-row.reverse .feat-copy, .feature-row.reverse .feat-visual{order:initial;}
-    .feature-row{padding-block:44px;}
-  }
-  .feat-tag{
-    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;
-    letter-spacing:0.1em;text-transform:uppercase;color:var(--orange-deep);
-    background:var(--orange-tint);padding:4px 10px;border-radius:3px;margin-bottom:16px;
-  }
-  .feat-copy h3{font-size:clamp(1.35rem,2.4vw,1.7rem);color:var(--ink);margin-bottom:14px;}
-  .feat-copy p{color:var(--muted);font-size:1rem;margin-bottom:18px;}
-  .feat-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-  .feat-list li{
-    display:flex;gap:10px;align-items:flex-start;font-size:0.94rem;color:var(--ink);
-  }
-  .feat-list li svg{flex:none;margin-top:3px;color:var(--good);}
-
-  /* generic mock frame */
-  .mock{
-    background:#fff;border:1px solid var(--line);border-radius:8px;
-    overflow:hidden;box-shadow:0 24px 48px -28px rgba(27,36,48,0.28);
-  }
-  .mock-bar{
-    display:flex;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--cream-2);
-  }
-  .mock-bar span{width:8px;height:8px;border-radius:50%;background:var(--line);}
-  .mock-body{padding:20px;}
-
-  /* calendar mock */
-  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
-  .cal-cell{
-    aspect-ratio:1;border:1px solid var(--line);border-radius:4px;
-    font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);
-    padding:4px;position:relative;background:#fff;
-  }
-  .cal-cell.has-job{background:var(--orange-tint);border-color:#F0C6A4;}
-  .cal-cell .dot{
-    width:6px;height:6px;border-radius:50%;background:var(--orange);
-    position:absolute;bottom:5px;left:5px;
-  }
-  .cal-legend{display:flex;gap:16px;margin-top:14px;font-size:0.72rem;color:var(--muted);}
-  .cal-legend span{display:inline-flex;align-items:center;gap:6px;}
-  .cal-legend i{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;}
-
-  /* certificate mock */
-  .cert-field{
-    display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);
-    font-size:0.85rem;
-  }
-  .cert-field .k{color:var(--muted);}
-  .cert-field .v{font-family:'IBM Plex Mono',monospace;color:var(--ink);}
-  .cert-result-chip{
-    margin-top:16px;background:var(--navy);color:#fff;border-radius:6px;
-    padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
-  }
-  .cert-result-chip .k{font-size:0.78rem;color:var(--muted-on-navy);}
-  .cert-result-chip .v{font-family:'IBM Plex Mono',monospace;font-size:1.15rem;color:var(--orange);}
-
-  /* quotes mock */
-  .doc-row{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:12px 0;border-bottom:1px solid var(--line);font-size:0.86rem;
-  }
-  .doc-row:last-child{border-bottom:none;}
-  .doc-tag{
-    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;padding:3px 8px;border-radius:3px;
-  }
-  .doc-tag.sales{background:#DDEBE1;color:var(--good);}
-  .doc-tag.defect{background:var(--orange-tint);color:var(--orange-deep);}
-  .doc-num{font-family:'IBM Plex Mono',monospace;color:var(--muted);}
-  .doc-amt{font-family:'IBM Plex Mono',monospace;font-weight:600;}
-
-  /* phone mock */
-  .phone{
-    max-width:270px;margin:0 auto;
-    background:var(--navy);border-radius:22px;padding:14px;
-    box-shadow:0 24px 48px -28px rgba(27,36,48,0.4);
-  }
-  .phone-screen{background:#fff;border-radius:14px;padding:16px;}
-  .phone-head{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.04em;color:var(--ink);margin-bottom:3px;}
-  .phone-sub{font-size:0.72rem;color:var(--muted);margin-bottom:14px;}
-  .job-card{
-    border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;
-  }
-  .job-card .t{font-size:0.82rem;font-weight:600;color:var(--ink);}
-  .job-card .a{font-size:0.72rem;color:var(--muted);margin-top:3px;}
-  .job-card .s{
-    display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
-    padding:2px 7px;border-radius:20px;
-  }
-  .s.pending{background:var(--orange-tint);color:var(--orange-deep);}
-  .s.done{background:#DDEBE1;color:var(--good);}
-
-  /* asset list mock */
-  .asset-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
-  .asset-row:last-child{border-bottom:none;}
-  .asset-icon{
-    width:30px;height:30px;border-radius:6px;background:var(--cream-2);
-    display:flex;align-items:center;justify-content:center;color:var(--orange-deep);flex:none;
-  }
-  .asset-name{font-size:0.85rem;color:var(--ink);}
-  .asset-meta{font-size:0.72rem;color:var(--muted);}
-  .asset-stock{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);}
-
-  /* comparison table */
-  .cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:8px;}
-  .cmp{width:100%;border-collapse:collapse;min-width:760px;font-size:0.9rem;}
-  .cmp th,.cmp td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
-  .cmp thead th{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:0.9rem;letter-spacing:0.03em;color:var(--ink);background:var(--cream);}
-  .cmp tbody th{font-weight:600;color:var(--ink);width:18%;}
-  .cmp .us{background:var(--orange-tint);}
-  .cmp thead th.us{color:var(--orange-deep);}
-  .cmp td{color:var(--muted);}
-  .cmp td.us{color:var(--ink);font-weight:500;}
-  .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:none;}
-  .cmp-note{font-size:0.8rem;color:var(--muted);margin-top:14px;max-width:80ch;margin-left:auto;margin-right:auto;text-align:center;}
-  .cmp-note a{color:var(--orange-deep);}
-
-  /* site compliance lights */
-  .tl{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:10px;vertical-align:-1px;box-shadow:0 0 0 3px rgba(27,36,48,0.06);}
-  .tl.red{background:#C0392B;}
-  .tl.amber{background:#E0A030;}
-  .tl.green{background:#3E8E5A;}
-  .doc-num{color:var(--ink);}
-  .doc-row .doc-amt{font-weight:500;color:var(--muted);}
-
-  /* trust band */
-  .trust{background:var(--navy);color:#fff;}
-  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-on-navy);border:1px solid var(--line-on-navy);margin-top:8px;}
-  .trust-card{background:var(--navy);padding:28px 26px;}
-  .trust-card svg{color:var(--orange);margin-bottom:14px;}
-  .trust-card h4{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1rem;color:#fff;margin-bottom:8px;letter-spacing:0.02em;}
-  .trust-card p{font-size:0.88rem;color:var(--muted-on-navy);}
-  @media (max-width:760px){.trust-grid{grid-template-columns:1fr;}}
-
-  /* roadmap */
-  .roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
-  @media (max-width:820px){.roadmap-grid{grid-template-columns:1fr;}}
-  .roadmap-card{
-    border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff;
-  }
-  .roadmap-badge{
-    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;
-    text-transform:uppercase;color:var(--orange-deep);background:var(--orange-tint);
-    padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:14px;
-  }
-  .roadmap-card h4{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.05rem;color:var(--ink);margin-bottom:8px;}
-  .roadmap-card p{font-size:0.88rem;color:var(--muted);}
-
-  /* pricing */
-  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch;}
-  @media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:640px){.price-grid{grid-template-columns:1fr;}}
-  .seat-note{
-    display:inline-block;margin-left:10px;font-size:0.74rem;color:var(--muted);
-    font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em;
-  }
-  .seat-calc{
-    max-width:760px;margin:36px auto 0;padding:24px 26px;background:#fff;
-    border:1px solid var(--line);border-radius:10px;
-  }
-  .seat-calc h3{font-size:1.15rem;color:var(--ink);margin-bottom:14px;}
-  .seat-calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-  @media (max-width:640px){.seat-calc-grid{grid-template-columns:repeat(2,1fr);}}
-  .seat-calc label{display:flex;flex-direction:column;gap:6px;font-size:0.82rem;color:var(--muted);}
-  .seat-calc input{
-    height:44px;border:1px solid var(--line);border-radius:6px;padding:0 10px;
-    font-size:1rem;color:var(--ink);background:var(--cream);width:100%;
-  }
-  .seat-calc-out{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:0.92rem;}
-  .seat-calc-out .big{font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--ink);}
-  .price-card{
-    border:1px solid var(--line);border-radius:10px;padding:30px 26px;background:#fff;
-    display:flex;flex-direction:column;
-  }
-  .price-card.featured{
-    border-color:var(--orange);
-    box-shadow:0 24px 48px -28px rgba(224,123,57,0.35);
-    position:relative;
-  }
-  .price-card.featured::before{
-    content:"MOST POPULAR";
-    position:absolute;top:-11px;left:26px;
-    background:var(--orange);color:#fff;font-family:'IBM Plex Mono',monospace;
-    font-size:0.64rem;letter-spacing:0.08em;padding:3px 10px;border-radius:20px;
-  }
-  .price-name{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.15rem;color:var(--ink);}
-  .price-for{font-size:0.85rem;color:var(--muted);margin-top:6px;min-height:38px;}
-  .price-cta-line{
-    font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.4rem;color:var(--ink);
-    margin-top:20px;padding-top:20px;border-top:1px solid var(--line);
-  }
-  .price-cta-sub{font-size:0.76rem;color:var(--muted);margin-top:2px;}
-  .price-list{list-style:none;margin:20px 0 26px;padding:0;display:flex;flex-direction:column;gap:9px;flex:1;}
-  .price-list li{display:flex;gap:9px;font-size:0.86rem;color:var(--ink);align-items:flex-start;}
-  .price-list li svg{flex:none;margin-top:3px;color:var(--good);}
-  .price-note{
-    text-align:center;color:var(--muted);font-size:0.86rem;margin-top:32px;
-  }
-
-  /* faq */
-  .faq{background:var(--cream-2);}
-  .faq-list{max-width:760px;margin:0 auto;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    cursor:pointer;padding:20px 2px;list-style:none;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
-    font-family:'Oswald',sans-serif;font-size:1.02rem;color:var(--ink);
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{content:'+';font-size:1.3rem;color:var(--orange);flex-shrink:0;}
-  .faq-item[open] summary::after{content:'\2212';}
-  .faq-item p{padding:0 2px 20px;color:var(--muted);font-size:0.94rem;max-width:64ch;}
-
-  /* final cta */
-  .final-cta{
-    background:var(--navy-3);color:#fff;text-align:center;
-  }
-  .final-cta h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);}
-  .final-cta p{color:var(--muted-on-navy);margin-top:16px;font-size:1.04rem;}
-  .final-ctas{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
-
-  /* footer */
-  footer{background:var(--navy-3);border-top:1px solid var(--line-on-navy);color:var(--muted-on-navy);}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-block:52px 28px;}
-  @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
-  @media (max-width:560px){.foot-grid{grid-template-columns:1fr;gap:32px;}}
-  .foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
-  .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted-on-navy);margin-bottom:14px;}
-  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-  .foot-col a{color:#D7DEE7;text-decoration:none;font-size:0.9rem;}
-  .foot-col a:hover{color:#fff;}
-  .foot-bottom{
-    border-top:1px solid var(--line-on-navy);padding-block:22px;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    font-size:0.78rem;font-family:'IBM Plex Mono',monospace;
-  }
-</style>
-
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#top">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z" fill="#E07B39"/>
-        <path d="M11 10H18V14H11L10 13V11L11 10Z" fill="#1B2430" opacity="0.55"/>
-      </svg>
-      Compliar
-    </a>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a class="btn btn-ghost-on-navy btn-sm" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Sign in</a>
-      <a class="btn btn-primary btn-sm" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">All-in-one fire, security &amp; electrical software</div>
-        <h1>Every job, covered <span>— not just the compliance.</span></h1>
-        <p class="hero-sub">Compliar is job management built specifically for fire, security &amp; electrical contractors — covering every base across electrical safety, life safety and property safety in nineteen disciplines, from fire alarm to electrical installation, with real quoting and invoicing, project estimating, job costing, live site compliance and a field app your technicians will actually use on site. Compliance is where it started; it now runs the whole operation.</p>
-        <div class="calc-badge" style="display:inline-flex;margin-bottom:22px;">30-DAY FREE TRIAL · NO COMMITMENT · NO CARD REQUIRED</div>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free</a>
-          <a class="btn btn-ghost-on-navy" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20demo%20request">Book a demo</a>
-        </div>
-        <div class="standards">
-          <span>BS 5839-1</span><span>PD 6662</span><span>BS 5266-1</span><span>BS EN 62676</span><span>BS 7671</span>
-        </div>
-      </div>
-
-      <div class="calc-card">
-        <div class="calc-head">
-          <div class="calc-title">Battery sizing</div>
-          <div class="calc-badge">BS 5839-1:2025 Annex E</div>
-        </div>
-        <div class="calc-desc">Try the calculator built into every Compliar fire alarm certificate. <a href="/fire-alarm-battery-calculator/" style="color:var(--orange);">Full calculator</a></div>
-
-        <div class="calc-row">
-          <label>Quiescent current <span class="val"><span id="iqVal">180</span> mA</span></label>
-          <input type="range" id="iq" min="20" max="600" step="5" value="180" oninput="calcBattery()">
-        </div>
-        <div class="calc-row">
-          <label>Alarm current <span class="val"><span id="iaVal">1.2</span> A</span></label>
-          <input type="range" id="ia" min="0.2" max="6" step="0.1" value="1.2" oninput="calcBattery()">
-        </div>
-
-        <div class="calc-result">
-          <div class="lbl">Recommended standby battery</div>
-          <div><span class="out" id="sizeOut">7</span><span class="unit">Ah</span></div>
-        </div>
-        <div class="calc-note">(Iq × 24h + Ia × 0.5h) × 1.25 safety margin, rounded to the nearest standard VRLA size. Illustrative — confirm against your own design assumptions.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="why band">
-    <div class="wrap why-grid">
-      <div>
-        <div class="section-head" style="margin-bottom:24px;">
-          <div class="eyebrow">Why Compliar exists</div>
-          <h2>Built by someone who was doing the job, not selling to it.</h2>
-        </div>
-        <div class="why-copy">
-          <p>Compliar was built by someone who has spent 20 years in electrical, fire and security — leading teams through audits, taking fire &amp; security companies through compliance and accreditation, and working with plenty of different software in the field and at the desk. None of it ever covered everything the job needed. So Compliar started as a working tool inside a small fire, security &amp; electrical company, shaped around how a 4–6 person team actually gets through a week: a technician checking in on site, filling in a real certificate, and a quote or invoice going out the same day.</p>
-          <p>The platforms that come closest are built and priced for much bigger companies, out of reach for the small and medium-sized businesses that make up most of the industry. Compliar covers every part of running a job and a business in this trade — scheduling, certification across electrical, life and property safety in nineteen disciplines, quoting, invoicing, projects, job costing, reporting, assets and stock — at a price that fits the size of company most of the industry actually is. You pay per person, and each person's seat includes what their job needs. No module you'll never switch on, and no minimum number of seats.</p>
-        </div>
-      </div>
-      <div class="why-stats">
-        <div class="why-stat"><div class="n">19</div><div class="l">disciplines covered, from fire alarm to EV charging &amp; electrical</div></div>
-        <div class="why-stat"><div class="n">15</div><div class="l">certificate field types, incl. auto battery sizing &amp; risk scoring</div></div>
-        <div class="why-stat"><div class="n">20</div><div class="l">years in electrical, fire &amp; security behind the build</div></div>
-        <div class="why-stat"><div class="n">100%</div><div class="l">of the field app usable from a phone on site</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" style="background:var(--cream);">
-    <div class="wrap">
-
-      <div class="section-head" style="padding-top:64px;">
-        <div class="eyebrow">What's inside</div>
-        <h2>Everything from the first booking to the paid invoice.</h2>
-        <p>One system for the whole job cycle, so nothing gets re-typed between a scheduling tool, a certificate PDF, an invoicing spreadsheet and a separate reporting tool.</p>
-      </div>
-
-      <!-- Calendar -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Scheduling</span>
-          <h3>See every maintenance visit before it's due</h3>
-          <p>Day, week and month views of every maintenance plan, tied to the property it's scheduled against — so a visit never quietly slips past its service interval.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Maintenance visits scheduled per property, not per technician's memory</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Combined calendar for both office planning and field work</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reschedule and reassign without leaving the job</li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Compliar — Fire, Security &amp; Electrical Contractor Software
+    </title>
+    <meta
+      name="description"
+      content="Scheduling, certificates, quotes and invoices for UK fire, security and electrical contractors. From £20 + VAT per user per month. Try free for 30 days."
+    />
+    <link rel="canonical" href="https://compliar.co.uk/" />
+    <meta name="theme-color" content="#1B2430" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Compliar" />
+    <meta
+      property="og:title"
+      content="Compliar — Fire, Security &amp; Electrical Contractor Software"
+    />
+    <meta
+      property="og:description"
+      content="Scheduling, certificates, quotes and invoices for UK fire, security and electrical contractors. From £20 + VAT per user per month. Try free for 30 days."
+    />
+    <meta property="og:url" content="https://compliar.co.uk/" />
+    <meta property="og:image" content="https://compliar.co.uk/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231B2430'/%3E%3Cpath d='M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z' fill='%23E07B39'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/site.css" />
+    <script src="/site.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Compliar",
+        "url": "https://compliar.co.uk/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web browser",
+        "description": "Job management, scheduling, certificates, quoting, invoicing, projects and job costing software for UK fire, security and electrical contractors.",
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "20.00",
+          "highPrice": "49.00",
+          "priceCurrency": "GBP",
+          "offerCount": "4",
+          "description": "Per user per month plus VAT: Lite £20, Pro £30, Premium £38, Design £49. Two months free when paid yearly. 30-day free trial, no card required."
+        }
+      }
+    </script>
+    <meta name="twitter:image" content="https://compliar.co.uk/og.png" />
+    <meta
+      property="og:image:alt"
+      content="Compliar — software for fire, security and electrical contractors"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/" aria-label="Compliar home"
+          ><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z"
+              fill="#E07B39"
+            /></svg
+          >Compliar</a
+        >
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faqs/">FAQs</a></li>
+            <li><a href="/resources/">Resources</a></li>
           </ul>
+        </nav>
+        <div class="nav-cta">
+          <a
+            class="sign-in"
+            href="https://app.compliar.co.uk"
+            target="_blank"
+            rel="noopener"
+            >Sign in</a
+          ><a
+            class="btn btn-primary btn-sm"
+            href="https://app.compliar.co.uk"
+            target="_blank"
+            rel="noopener"
+            >Start free <span aria-hidden="true">↗</span></a
+          >
         </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="cal-grid" id="calGrid"></div>
-              <div class="cal-legend"><span><i></i> Maintenance visit scheduled</span></div>
+        <details class="mobile-menu">
+          <summary aria-label="Toggle navigation menu">
+            Menu <span aria-hidden="true">☰</span>
+          </summary>
+          <nav aria-label="Mobile navigation">
+            <ul>
+              <li><a href="/features/">Features</a></li>
+              <li><a href="/pricing/">Pricing</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/faqs/">FAQs</a></li>
+              <li><a href="/resources/">Resources</a></li>
+              <li>
+                <a
+                  href="https://app.compliar.co.uk"
+                  target="_blank"
+                  rel="noopener"
+                  >Sign in ↗</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero home-hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">Built for the way you work</div>
+            <h1>Every job.<br />One place.<br /><span>All sorted.</span></h1>
+            <p class="hero-sub">
+              Scheduling, certificates, quotes and invoices. One connected
+              workspace for fire, security &amp; electrical contractors.
+            </p>
+            <div class="hero-ctas">
+              <a
+                class="btn btn-primary"
+                href="https://app.compliar.co.uk"
+                target="_blank"
+                rel="noopener"
+                >Start your free trial ↗</a
+              ><a class="btn btn-ghost-on-navy" href="/features/"
+                >Explore features</a
+              >
             </div>
+            <p class="trial-note">
+              30 days free · No card required · From £20 + VAT /user/mo
+            </p>
           </div>
-        </div>
-      </div>
-
-      <!-- Trades & disciplines -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Trades &amp; disciplines</span>
-          <h3>Only the trades and disciplines you actually do</h3>
-          <p>Tell Compliar which trades you cover — fire protection, electrical, security — then switch off the individual disciplines and job types you don't service, such as aspirating, risers or suppression. Compliar hides the forms, job templates and equipment options that don't apply, on the desk and in the field.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Switch each trade on or off for your company</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Turn off individual disciplines (11 in fire protection alone) and the lines of work you don't run</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>One-click presets, such as core systems only, to get started fast</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag sales">ON</span><span class="doc-num">Fire alarm</span><span class="doc-amt">BS 5839-1</span></div>
-              <div class="doc-row"><span class="doc-tag sales">ON</span><span class="doc-num">Emergency lighting</span><span class="doc-amt">BS 5266-1</span></div>
-              <div class="doc-row"><span class="doc-tag defect">OFF</span><span class="doc-num">Aspirating</span><span class="doc-amt">EN 54-20</span></div>
-              <div class="doc-row"><span class="doc-tag defect">OFF</span><span class="doc-num">Dry / wet risers</span><span class="doc-amt">BS 9990</span></div>
+          <div
+            class="workspace-preview"
+            role="img"
+            aria-label="Illustrative Compliar workspace showing scheduled jobs, certificates and invoices"
+          >
+            <div class="preview-toolbar">
+              <span class="preview-brand"
+                >COMPLIAR <span>/ Workspace</span></span
+              ><span class="preview-avatar">JD</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certificates -->
-      <div class="feature-row" id="certificates">
-        <div class="feat-copy">
-          <span class="feat-tag">Certificates</span>
-          <h3>Certificates that do the maths for you</h3>
-          <p>A 15 field-type certificate engine spanning nineteen disciplines — fire, intruder, CCTV, access control, emergency lighting, electrical installation, EV charging, PAT testing and more — including two built-in calculators most platforms leave to a separate spreadsheet: BS 5839-1:2025 Annex E battery sizing, and PAS 79-style fire risk scoring.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Build and edit your own certificate templates — no waiting on a vendor's design team (Premium seats and up)</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto battery sizing and fire-risk scoring, calculated as you fill the form</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Clean, read-only print view and a full issued-certificate history</li>
-          </ul>
-          <p style="margin-top:18px;font-size:0.92rem;">See the full certificate sets: <a href="/fire-alarm-certificate-software/" style="color:var(--orange-deep);">fire alarm</a> and <a href="/eicr-and-electrical-certificate-software/" style="color:var(--orange-deep);">electrical (EICR)</a>.</p>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="cert-field"><span class="k">Panel type</span><span class="v">2-loop addressable</span></div>
-              <div class="cert-field"><span class="k">Measured quiescent current</span><span class="v">180 mA</span></div>
-              <div class="cert-field"><span class="k">Measured alarm current</span><span class="v">1.2 A</span></div>
-              <div class="cert-field"><span class="k">Standby duration</span><span class="v">24 h</span></div>
-              <div class="cert-result-chip"><span class="k">CALCULATED BATTERY SIZE</span><span class="v">7 Ah</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Site compliance -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Site compliance</span>
-          <h3>Every site, red, amber or green — at a glance</h3>
-          <p>Compliar scores each site from its real records — failed assets, open defects and maintenance plans past due — and takes the worst of its systems. The colour shows on the dashboard, the sites list and every customer, and your office team gets an in-app alert when a site turns red.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Red for a failed asset with no resolved defect, a critical open defect or a plan past its due date; amber for other open defects or a plan due within 30 days</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>A customer's colour is the worst of its active sites, with the sites that need attention listed first</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Scored from the work your engineers actually record — no separate spreadsheet to keep up to date</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-num"><i class="tl red"></i>Riverside Retail Park</span><span class="doc-amt">3 failed assets</span></div>
-              <div class="doc-row"><span class="doc-num"><i class="tl amber"></i>Northgate Business Centre</span><span class="doc-amt">1 open defect</span></div>
-              <div class="doc-row"><span class="doc-num"><i class="tl green"></i>The Old Mill Offices</span><span class="doc-amt">Compliant</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quotes/Invoices -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Quotes &amp; invoices</span>
-          <h3>Sales work and defects, kept separate</h3>
-          <p>New business and remedial work found on a maintenance visit run through two distinct quote types, each with its own numbering sequence — so your win-rate reporting on one doesn't get muddied by the other. Every quote, invoice and certificate dispatches as a real branded email with the PDF attached — not a pre-filled draft you have to send yourself.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales quotes and defect quotes, tracked and numbered separately</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Real email dispatch straight from the job, PDF attached automatically</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Company bank details and terms pulled in automatically</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Quotes and defect quotes start on a Lite seat; invoicing and credit control are on Pro seats and up</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">QUO-2026-0091</span><span class="doc-amt">£2,140.00</span></div>
-              <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0034</span><span class="doc-amt">£480.00</span></div>
-              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">QUO-2026-0090</span><span class="doc-amt">£6,750.00</span></div>
-              <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0033</span><span class="doc-amt">£210.00</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Job documents -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Job documents</span>
-          <h3>Everything from the visit, in one pack</h3>
-          <p>Every job carries its own documents card: the job report, an asset report, each certificate, every quote and every invoice, all as branded PDFs. View or download any of them, tick the ones you want to send and email just those — Compliar keeps track of what has gone out.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View or download any document in one click, straight from the job</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tick what to send — only those are emailed and marked as sent</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>A sent / not sent marker on every document, so nothing is chased twice or forgotten</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag sales">SENT</span><span class="doc-num">Job report</span><span class="doc-amt">PDF</span></div>
-              <div class="doc-row"><span class="doc-tag sales">SENT</span><span class="doc-num">Asset report</span><span class="doc-amt">PDF</span></div>
-              <div class="doc-row"><span class="doc-tag sales">SENT</span><span class="doc-num">Certificate CERT-0412</span><span class="doc-amt">PDF</span></div>
-              <div class="doc-row"><span class="doc-tag defect">NOT SENT</span><span class="doc-num">Defect quote DQ-0034</span><span class="doc-amt">PDF</span></div>
-              <div class="doc-row"><span class="doc-tag defect">NOT SENT</span><span class="doc-num">Invoice INV-0178</span><span class="doc-amt">PDF</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Field app -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Field app</span>
-          <h3>Everything a technician needs, on site</h3>
-          <p>A travelling → on-site status with its own timer, one-tap directions to the next stop, parts used, billable line items, a required-certificate checklist and technician notes — one simplified mobile view, with none of the admin clutter of the desk side.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Travelling / on-site status with an automatic timer, plus one-tap directions</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts used and billable items logged from the van</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Required-certificate checklist, so nothing's forgotten before sign-off</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-head">Today</div>
-              <div class="phone-sub">Tue 22 Sep · 3 jobs</div>
-              <div class="job-card">
-                <div class="t">Riverside Retail Park</div>
-                <div class="a">Fire alarm — annual service</div>
-                <span class="s done">Checked in 08:52</span>
+            <div class="preview-body">
+              <div class="preview-heading">
+                <div>
+                  <span class="mono">YOUR WORKDAY, CONNECTED</span>
+                  <h2>A clear view of every job.</h2>
+                </div>
+                <span class="status-dot"></span>
               </div>
-              <div class="job-card">
-                <div class="t">Northgate Business Centre</div>
-                <div class="a">Intruder alarm — routine test</div>
-                <span class="s pending">09:30 — not started</span>
+              <div class="preview-stats">
+                <div><strong>08</strong><span>Jobs today</span></div>
+                <div><strong>19</strong><span>Disciplines</span></div>
+                <div><strong>03</strong><span>Ready to invoice</span></div>
               </div>
-              <div class="job-card">
-                <div class="t">The Old Mill Offices</div>
-                <div class="a">Fire extinguisher check</div>
-                <span class="s pending">13:00 — not started</span>
+              <div class="preview-label">
+                <span>Today's schedule</span
+                ><span class="mono">EXAMPLE VIEW</span>
+              </div>
+              <div class="preview-job">
+                <span class="job-time">09:00</span>
+                <div>
+                  <strong>Fire alarm service</strong
+                  ><span>Riverside House · Planned maintenance</span>
+                </div>
+                <span class="job-status">On site</span>
+              </div>
+              <div class="preview-job">
+                <span class="job-time">11:30</span>
+                <div>
+                  <strong>Electrical inspection</strong
+                  ><span>Park Street · EICR</span>
+                </div>
+                <span class="job-status scheduled">Scheduled</span>
+              </div>
+              <div class="preview-job">
+                <span class="job-time">14:00</span>
+                <div>
+                  <strong>Emergency lighting</strong
+                  ><span>Westfield Court · Routine test</span>
+                </div>
+                <span class="job-status scheduled">Scheduled</span>
+              </div>
+              <div class="preview-flow">
+                <span>Job booked</span><b>→</b><span>Certificate issued</span
+                ><b>→</b><span>Invoice sent</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Defects -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Defects</span>
-          <h3>From failed asset to fixed, without re-typing</h3>
-          <p>Fail an asset on site and the defect is raised against it. Pick the wording from your own library of remarks, apply the same remark to every selected asset in one go, then turn the defects into a quote in a click and see at a glance which still need one, which are quoted and which are resolved.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>A remark library you control, so the same fault reads the same way on every report</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Apply one remark to many assets at once</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Quote the selected defects in one click, linked back to the asset that failed</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag defect">NEEDS QUOTE</span><span class="doc-num">FAP-014 · Call point</span><span class="doc-amt">Cracked element</span></div>
-              <div class="doc-row"><span class="doc-tag defect">QUOTED</span><span class="doc-num">FAP-021 · Smoke detector</span><span class="doc-amt">Contaminated head</span></div>
-              <div class="doc-row"><span class="doc-tag defect">QUOTED</span><span class="doc-num">EML-003 · Luminaire</span><span class="doc-amt">Battery failed</span></div>
-              <div class="doc-row"><span class="doc-tag sales">RESOLVED</span><span class="doc-num">FAP-007 · Sounder</span><span class="doc-amt">No output</span></div>
+            <div class="preview-caption">
+              Illustrative workspace · One system, from booking to payment
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Job costing -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Job costing</span><span class="seat-note">Premium seats and up</span>
-          <h3>Know what every job really earned</h3>
-          <p>Log labour on the job from the desk or the phone, billable or not, with a cost rate and a charge rate for each engineer. Every job shows its sell revenue against labour and materials cost, with gross profit and margin worked out as you go.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Cost and charge rates per person, set once in Settings</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts used on the job costed from your own stock prices</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Margin shown on every job, colour-coded, so thin ones stand out</li>
-          </ul>
+      </section>
+      <div class="proof-strip">
+        <div class="wrap">
+          <span>Made for your trade</span><strong>Fire protection</strong
+          ><i aria-hidden="true">/</i><strong>Security systems</strong
+          ><i aria-hidden="true">/</i><strong>Electrical safety</strong
+          ><a href="/features/#certificates">19 disciplines ↗</a>
         </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="cert-field"><span class="k">Sell revenue</span><span class="v">£1,240.00</span></div>
-              <div class="cert-field"><span class="k">Labour cost (6 h 30 m logged)</span><span class="v">£312.00</span></div>
-              <div class="cert-field"><span class="k">Materials cost</span><span class="v">£268.50</span></div>
-              <div class="cert-result-chip"><span class="k">GROSS PROFIT</span><span class="v">£659.50</span></div>
+      </div>
+      <section class="band" id="how-it-works">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">How Compliar works</div>
+              <h2>One job. Connected<br />from start to finish.</h2>
             </div>
+            <a class="text-link" href="/getting-started/"
+              >See how to get started ↗</a
+            >
+          </div>
+          <p class="workflow-caption">
+            Illustrative workflow · An emergency lighting installation
+          </p>
+          <ol class="workflow-grid">
+            <li>
+              <span class="workflow-number mono">01 / PRICE &amp; PLAN</span>
+              <h3>Start with a clear scope.</h3>
+              <p>
+                Build the quote, plan the work and keep the customer and site
+                connected.
+              </p>
+              <details>
+                <summary>Follow this stage</summary>
+                <p>
+                  Record what is included in the installation, price parts and
+                  labour, then schedule the work for your team.
+                </p>
+                <a href="/features/#projects"
+                  >Explore projects &amp; estimating ↗</a
+                >
+              </details>
+            </li>
+            <li>
+              <span class="workflow-number mono"
+                >02 / DELIVER &amp; RECORD</span
+              >
+              <h3>Keep the site work together.</h3>
+              <p>
+                Give technicians the job details and a place to record the work
+                as it happens.
+              </p>
+              <details>
+                <summary>Follow this stage</summary>
+                <p>
+                  Record time, parts, site notes and the certificates the job
+                  needs. Keep equipment records linked to the property.
+                </p>
+                <a href="/features/#field">Explore the field app ↗</a>
+              </details>
+            </li>
+            <li>
+              <span class="workflow-number mono"
+                >03 / SIGN OFF &amp; INVOICE</span
+              >
+              <h3>Close the job with confidence.</h3>
+              <p>
+                Complete the certificates, send the documents and keep track of
+                the job’s costs.
+              </p>
+              <details>
+                <summary>Follow this stage</summary>
+                <p>
+                  Review and issue the relevant certificates, send the customer
+                  their documents and raise the invoice from the recorded work.
+                </p>
+                <a href="/features/#business"
+                  >Explore quotes &amp; invoices ↗</a
+                >
+              </details>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="home-bottom band">
+        <div class="wrap home-bottom-grid">
+          <div>
+            <div class="eyebrow">Built from experience</div>
+            <h2>20 years in the trade.<br />Still doing the work.</h2>
+            <p>
+              Keiran Sandham brings 20 years in electrical, fire and security to
+              Compliar, alongside ongoing responsibility for his team’s full
+              day-to-day operations. From managing people and pricing jobs to
+              design and accreditation audits, his work continues to shape how
+              Compliar connects each stage of a job, from pricing to final
+              sign-off.
+            </p>
+            <a class="text-link" href="/about/">Read Keiran’s story ↗</a>
+          </div>
+          <div class="pricing-teaser">
+            <span class="mono">SIMPLE, FLEXIBLE PRICING</span>
+            <div class="teaser-price">£20<span> + VAT /user/mo</span></div>
+            <p>
+              Start with Lite. Mix seats to fit your team, with no minimum
+              number of users.
+            </p>
+            <a class="text-link" href="/pricing/">Find your fit ↗</a>
           </div>
         </div>
-      </div>
-
-      <!-- Projects &amp; tenders -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Projects &amp; tenders</span><span class="seat-note">Premium seats and up</span>
-          <h3>Price a whole project, area by area</h3>
-          <p>Start a project from a prospect or an existing customer site, break it into floors and areas, and build the bill of quantities line by line — parts, labour hours and waste — at your target margin. Cost, sell, margin and VAT update as you build it.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Projects are numbered and kept apart from your day-to-day jobs</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Areas seeded from a template, then edited to suit the building</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts and labour priced from your own rates, with live margin</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="cert-field"><span class="k">Ground floor — fire detection</span><span class="v">£4,820</span></div>
-              <div class="cert-field"><span class="k">First floor — fire detection</span><span class="v">£4,310</span></div>
-              <div class="cert-field"><span class="k">Plant room — emergency lighting</span><span class="v">£1,260</span></div>
-              <div class="cert-result-chip"><span class="k">PROJECT SELL (EX VAT)</span><span class="v">£10,390</span></div>
-            </div>
+      </section>
+      <section class="final-cta band">
+        <div class="wrap">
+          <div class="eyebrow">Your next job starts here</div>
+          <h2>Less paperwork. More progress.</h2>
+          <p>Try Compliar free for 30 days. No card required.</p>
+          <div class="final-ctas">
+            <a
+              class="btn btn-primary"
+              href="https://app.compliar.co.uk"
+              target="_blank"
+              rel="noopener"
+              >Start your free trial ↗</a
+            ><a class="btn btn-ghost-on-navy" href="/contact/"
+              >Arrange a demo</a
+            >
           </div>
         </div>
-      </div>
-
-      <!-- Assets/stock -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Assets, stock &amp; settings</span>
-          <h3>The record of what's actually installed</h3>
-          <p>A per-property asset register, parts and warehouse stock levels, purchase orders dispatched straight to suppliers, and company-wide settings for branding, document numbering and terms — the groundwork every other part of Compliar relies on.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Full equipment register per property, in your own asset types with codes like FAP-001</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts, warehouses and live stock levels</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Purchase orders, dispatched to suppliers with a real PDF attached</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The asset register starts on a Lite seat; stock and purchase orders are on Pro seats and up</li>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <a class="foot-brand" href="/"
+            ><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z"
+                fill="#E07B39"
+              /></svg
+            >Compliar</a
+          >
+          <p class="footer-intro">
+            Less admin. More time for the job.<br />Built for UK fire, security
+            &amp; electrical contractors.
+          </p>
+        </div>
+        <div class="foot-col">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="/getting-started/">Getting started</a></li>
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/pricing/">Pricing</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faqs/">FAQs</a></li>
+            <li><a href="/resources/">Resources</a></li>
           </ul>
         </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="asset-row">
-                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 9-7 10-3.6-1-7-5-7-10V5l7-3z" stroke="currentColor" stroke-width="1.8"/></svg></div>
-                <div><div class="asset-name">2-loop fire panel</div><div class="asset-meta">Riverside Retail Park</div></div>
-                <div class="asset-stock">Installed</div>
-              </div>
-              <div class="asset-row">
-                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg></div>
-                <div><div class="asset-name">12Ah VRLA battery (pair)</div><div class="asset-meta">Warehouse — IDES Office</div></div>
-                <div class="asset-stock mono">18 in stock</div>
-              </div>
-              <div class="asset-row">
-                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></div>
-                <div><div class="asset-name">Smoke detector, optical</div><div class="asset-meta">Warehouse — Van 2</div></div>
-                <div class="asset-stock mono">6 in stock</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reporting -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">Reporting &amp; insights</span>
-          <h3>What's due, what's overdue, and where the revenue is</h3>
-          <p>Compliance status and data-quality checks across your whole customer base, plus a financial view — revenue trend, outstanding invoices, win rate and your top customers by revenue — without exporting anything to a spreadsheet first.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Compliance status — overdue, due-soon and on-track maintenance plans, at a glance</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Data-quality checks — properties with no maintenance plan, no assets or no contract</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Revenue trend, outstanding invoices and your top customers by revenue</li>
+        <div class="foot-col">
+          <h2>Guides &amp; tools</h2>
+          <ul>
+            <li>
+              <a href="/fire-alarm-battery-calculator/">Battery calculator</a>
+            </li>
+            <li>
+              <a href="/fire-alarm-certificate-software/"
+                >Fire alarm certificates</a
+              >
+            </li>
+            <li>
+              <a href="/eicr-and-electrical-certificate-software/"
+                >Electrical certificates</a
+              >
+            </li>
           </ul>
         </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="cert-field"><span class="k">Overdue maintenance plans</span><span class="v">3</span></div>
-              <div class="cert-field"><span class="k">Due within 14 days</span><span class="v">11</span></div>
-              <div class="cert-field"><span class="k">Properties with no maintenance plan set</span><span class="v">2</span></div>
-              <div class="cert-result-chip"><span class="k">REVENUE, LAST 30 DAYS</span><span class="v">£18,420</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Customer portal -->
-      <div class="feature-row">
-        <div class="feat-copy">
-          <span class="feat-tag">Customer portal</span>
-          <h3>No more chasing PDFs by email</h3>
-          <p>A client-facing login — whole account or a single site, set per contact — shows exactly what that customer should see: certificates, open defects, live equipment, and the digital log book for sites that have one switched on.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Account-wide or single-site portal access, set per contact</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates, defects and equipment visible the moment they're issued</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Optional digital log book — 10 BS 5839 categories, replacing the paper one in the plant room</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag sales">LIVE</span><span class="doc-num">Riverside Retail Park</span><span class="doc-amt">2 certs</span></div>
-              <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">Northgate Business Centre</span><span class="doc-amt">1 open</span></div>
-              <div class="doc-row"><span class="doc-tag sales">LIVE</span><span class="doc-num">The Old Mill Offices</span><span class="doc-amt">Log book</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RAMS -->
-      <div class="feature-row reverse">
-        <div class="feat-copy">
-          <span class="feat-tag">RAMS</span><span class="seat-note">Pro seats and up</span>
-          <h3>Risk assessments without starting from a blank page</h3>
-          <p>Create a RAMS straight from a job and it pulls in hazards and a method statement from ready-made templates covering every discipline Compliar supports — or start from a blank RAMS for anything bespoke. Signed off on site and issued as a PDF.</p>
-          <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Task-linked creation, auto-populated from the site and job</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready-made templates across every discipline, or build one from scratch</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Editable hazards, electronic sign-off and a printable PDF</li>
-          </ul>
-        </div>
-        <div class="feat-visual">
-          <div class="mock">
-            <div class="mock-bar"><span></span><span></span><span></span></div>
-            <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag defect">HIGH</span><span class="doc-num">Working at height — fire alarm detector servicing</span></div>
-              <div class="doc-row"><span class="doc-tag defect">HIGH</span><span class="doc-num">Lone working — out-of-hours call-out</span></div>
-              <div class="doc-row"><span class="doc-tag sales">LOW</span><span class="doc-num">Manual handling — panel replacement</span></div>
-              <div class="doc-row"><span class="doc-tag sales">LOW</span><span class="doc-num">Occupied site — public access areas</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section class="band" id="roadmap">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">In active development</div>
-        <h2>What's coming next</h2>
-        <p>Compliar ships in scoped passes. Here's what's genuinely still on the list — everything above this is already live.</p>
-      </div>
-      <div class="roadmap-grid">
-        <div class="roadmap-card">
-          <span class="roadmap-badge">In planning</span>
-          <h4>Accounting link</h4>
-          <p>A link to your accounting software, so invoices and payments don't have to be typed in twice. Not available yet.</p>
-        </div>
-        <div class="roadmap-card">
-          <span class="roadmap-badge">In testing</span>
-          <h4>Offline field mode</h4>
-          <p>Working through a job on site with no signal, then syncing when the phone is back online. Not switched on for customers yet; today the field app needs a mobile signal.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="band" id="pricing" style="background:var(--cream-2);">
-    <div class="wrap">
-      <div class="section-head center">
-        <div class="eyebrow">Pricing</div>
-        <h2>Priced per person. Each seat pays for what that person uses.</h2>
-        <p>Give field engineers a Lite seat, the office a Pro seat, and so on up, and mix them in one company. There is no minimum number of seats and no price to ask for. Pay yearly and you get two months free. Every account starts with a 30-day free trial, no card required.</p>
-      </div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-name">Lite</div>
-          <div class="price-for">For field engineers: the basics, plus assets, reports, defects and quotes.</div>
-          <div class="price-cta-line">£20<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
-          <div class="price-cta-sub">or £200 + VAT a year (two months free)</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar and jobs</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Customers, sites, assets and log books</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates across 19 disciplines, with live battery sizing</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Defects and quotes</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reports: compliance status, data quality, SLA and technician activity</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Timesheets</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The field app on a phone</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-name">Pro</div>
-          <div class="price-for">For the office: everything in Lite plus the full desk.</div>
-          <div class="price-cta-line">£30<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
-          <div class="price-cta-sub">or £300 + VAT a year (two months free)</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Lite</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Maintenance plans</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Invoicing and credit control</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Rates and charges, scope blocks</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Stock and purchase orders</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>RAMS</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-name">Premium</div>
-          <div class="price-for">For estimating and control: everything in Pro plus projects and costing.</div>
-          <div class="price-cta-line">£38<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
-          <div class="price-cta-sub">or £380 + VAT a year (two months free)</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Pro</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Projects and tenders with bills of quantities</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Job costing and margin</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced reports: financial and project delivery</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own certificate templates</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-name">Design</div>
-          <div class="price-for">For drawings and pricing from plans: everything in Premium plus Design.</div>
-          <div class="price-cta-line">£49<span style="font-size:0.48em;">&nbsp;+ VAT /user/mo</span></div>
-          <div class="price-cta-sub">or £490 + VAT a year (two months free)</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Premium</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>CAD drawings, as-fitted plans, zone plans, wiring and schematics</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Take-offs and pricing from your quantities</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Onboarding, quoted for your business</li>
+        <div class="foot-col">
+          <h2>Let's talk</h2>
+          <ul>
+            <li>
+              <a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a>
+            </li>
+            <li>
+              <a href="/contact/">Contact &amp; demos ↗</a>
+            </li>
           </ul>
         </div>
       </div>
-
-      <div class="seat-calc" id="seatCalc" aria-label="Work out your price">
-        <h3>Work out your price</h3>
-        <div class="seat-calc-grid">
-          <label>Lite seats<input type="number" inputmode="numeric" min="0" max="500" value="5" data-price="20"></label>
-          <label>Pro seats<input type="number" inputmode="numeric" min="0" max="500" value="2" data-price="30"></label>
-          <label>Premium seats<input type="number" inputmode="numeric" min="0" max="500" value="0" data-price="38"></label>
-          <label>Design seats<input type="number" inputmode="numeric" min="0" max="500" value="1" data-price="49"></label>
-        </div>
-        <div class="seat-calc-out">
-          <div><span class="big" id="scMonth">£209</span> + VAT a month</div>
-          <div>or <span class="big" id="scYear">£2,090</span> + VAT a year, paid yearly (two months free)</div>
-        </div>
+      <div class="wrap foot-bottom">
+        <span>© 2026 COMPLIAR LTD · Built in the UK</span
+        ><span>Company number: 17519777</span>
       </div>
-
-      <p class="price-note">30-day free trial, no card required. Prices are per user per month, plus VAT. Compliar is in active development, and early customers help shape what ships next.</p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="band faq" id="faq">
-    <div class="wrap">
-      <div class="section-head center">
-        <div class="eyebrow">FAQ</div>
-        <h2>Questions people actually ask</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>How much does Compliar cost?</summary>
-          <p>Compliar is priced per person, by seat: Lite £20, Pro £30, Premium £38 and Design £49 per user per month, plus VAT. Pay yearly and you get two months free. You can mix seats in one company, there is no minimum number of seats, and every account starts with a 30-day free trial, no card required.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What does each seat include?</summary>
-          <p>Lite is for field engineers: calendar, jobs, customers, sites and assets, certificates, defects, quotes, reports and timesheets, with the field app. Pro adds the office desk: maintenance plans, invoicing and credit control, rates, stock, purchase orders and RAMS. Premium adds projects and tenders, job costing, advanced reports and your own certificate templates. Design adds drawings and take-offs. Each seat includes everything in the one below it.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What disciplines does Compliar cover?</summary>
-          <p>19 disciplines across fire, security and electrical — fire alarm, intruder alarm, CCTV, access control, emergency lighting, electrical installation, EV charging, PAT testing and more, all in one system.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do the certificates follow British Standards?</summary>
-          <p>Compliar's certificate templates are built to follow the relevant British Standards for each discipline, and each one names the standard it follows. They include BS 5839-1 (fire alarms), PD 6662 &amp; BS EN 50131 (intruder alarms), BS EN 62676-4 (CCTV), BS 5266-1 (emergency lighting) and BS 7671 (electrical installations). The engineer who signs a certificate remains responsible for its content.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is there a contract or minimum commitment?</summary>
-          <p>No. Every account starts with a 30-day free trial, no card required, and there is no minimum term or minimum number of seats.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I use different seats in one company?</summary>
-          <p>Yes. Each person has their own seat, so you can put field engineers on Lite, the office on Pro, an estimator on Premium or Design, and change a person's seat later.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is RAMS (risk assessments) available yet?</summary>
-          <p>Yes — RAMS is live. Create one straight from a job and it pulls in hazards and a method statement from ready-made templates across every discipline, or start from a blank RAMS for anything bespoke. Each one is signed off and issued as a PDF.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I price a whole project, not just a job?</summary>
-          <p>Yes. Projects &amp; tenders let you start from a prospect or an existing customer site, split the work into areas, and build a bill of quantities with parts, labour hours and waste at your target margin. Projects are numbered separately from your day-to-day jobs.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is there a mobile app?</summary>
-          <p>The field app runs in your phone's browser, so there is nothing to download from an app store. Technicians get a simplified view built for site work: status and timer, directions, parts, billable items and the certificates a job needs, without the office clutter. It needs a mobile signal on site; an offline mode is in testing and is not switched on for customers yet.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Who can see my data?</summary>
-          <p>Each company's data is kept separate in the database itself, so one customer of Compliar can never see another's. Your own customers only see what you give them: a portal login can be limited to a whole account or a single site.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta band">
-    <div class="wrap">
-      <h2>Ready to see it running your whole operation?</h2>
-      <p>Get in touch and we'll get your organisation set up — 30 days free, no card, no commitment — or sign in if you're already onboard.</p>
-      <div class="final-ctas">
-        <a class="btn btn-primary" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free</a>
-        <a class="btn btn-ghost-on-navy" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20demo%20request">Book a demo</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap foot-grid">
-    <div>
-      <div class="foot-brand">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 4H8L4 8V16L8 20H20V16H10L8 14V10L10 8H20V4Z" fill="#E07B39"/></svg>
-        Compliar
-      </div>
-      <p style="max-width:34ch;font-size:0.88rem;color:var(--muted-on-navy);">The system that runs a fire, security &amp; electrical company — certificates across nineteen disciplines, scheduling, quotes, invoicing, reporting, assets and stock, built around how the work actually happens.</p>
-    </div>
-    <div class="foot-col">
-      <h5>Product</h5>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Guides &amp; tools</h5>
-      <ul>
-        <li><a href="/fire-alarm-battery-calculator/">Fire alarm battery calculator</a></li>
-        <li><a href="/fire-alarm-certificate-software/">Fire alarm certificate software</a></li>
-        <li><a href="/eicr-and-electrical-certificate-software/">EICR &amp; electrical certificates</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Get in touch</h5>
-      <ul>
-        <li><a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a></li>
-        <li><a href="https://app.compliar.co.uk" target="_blank" rel="noopener">Sign in to Compliar</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="wrap foot-bottom">
-    <span>© 2026 COMPLIAR · BUILT IN THE UK</span>
-    <span>BS 5839-1 · PD 6662 · BS 5266-1 · BS EN 62676 · BS 7671</span>
-  </div>
-</footer>
-
-<script>
-  function calcBattery(){
-    var iq = parseFloat(document.getElementById('iq').value); // mA
-    var ia = parseFloat(document.getElementById('ia').value); // A
-    document.getElementById('iqVal').textContent = iq;
-    document.getElementById('iaVal').textContent = ia.toFixed(1);
-
-    var iqA = iq / 1000;
-    var ah = ((iqA * 24) + (ia * 0.5)) * 1.25;
-
-    var sizes = [2.1, 3.2, 7, 12, 17, 24, 26, 38, 65];
-    var chosen = sizes[sizes.length - 1];
-    for (var i = 0; i < sizes.length; i++){
-      if (ah <= sizes[i]) { chosen = sizes[i]; break; }
-    }
-    document.getElementById('sizeOut').textContent = chosen;
-  }
-
-  function buildCalendar(){
-    var grid = document.getElementById('calGrid');
-    if(!grid) return;
-    var jobDays = [2, 5, 9, 12, 13, 18, 23, 27];
-    var html = '';
-    for (var d = 1; d <= 30; d++){
-      var hasJob = jobDays.indexOf(d) !== -1;
-      html += '<div class="cal-cell' + (hasJob ? ' has-job' : '') + '">' + d + (hasJob ? '<span class="dot"></span>' : '') + '</div>';
-    }
-    grid.innerHTML = html;
-  }
-
-  function seatCalc(){
-    var box = document.getElementById('seatCalc');
-    if(!box) return;
-    var inputs = box.querySelectorAll('input[data-price]');
-    var month = 0;
-    for (var i = 0; i < inputs.length; i++){
-      var n = parseInt(inputs[i].value, 10);
-      if (isNaN(n) || n < 0) n = 0;
-      if (n > 500) n = 500;
-      month += n * parseInt(inputs[i].getAttribute('data-price'), 10);
-    }
-    var fmt = function(v){ return '£' + v.toLocaleString('en-GB'); };
-    document.getElementById('scMonth').textContent = fmt(month);
-    document.getElementById('scYear').textContent = fmt(month * 10);
-  }
-  (function(){
-    var box = document.getElementById('seatCalc');
-    if(!box) return;
-    var inputs = box.querySelectorAll('input');
-    for (var i = 0; i < inputs.length; i++){ inputs[i].addEventListener('input', seatCalc); }
-  })();
-
-  calcBattery();
-  buildCalendar();
-  seatCalc();
-</script>
+    </footer>
+  </body>
+</html>
