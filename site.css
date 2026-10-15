@@ -1547,7 +1547,7 @@ header.nav {
     radial-gradient(ellipse at 80% 45%, #293b50 0, transparent 65%), #141d2a;
 }
 .home-hero .hero-grid {
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 65px;
   padding-block: 84px 88px;
 }
@@ -1573,6 +1573,11 @@ header.nav {
   margin-top: 19px;
 }
 .workspace-preview {
+  width: 100%;
+  max-width: 560px;
+  min-width: 0;
+  justify-self: center;
+  transform: none;
   border-radius: 14px;
   border: 1px solid #526173;
   background: #f8f9fb;
@@ -1683,6 +1688,7 @@ header.nav {
 }
 .preview-job > div {
   flex: 1;
+  min-width: 0;
 }
 .preview-job strong {
   display: block;
@@ -2870,27 +2876,6 @@ header.nav {
   font-size: 1rem;
   color: #536073;
 }
-.discipline-link {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  color: var(--ink);
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.discipline-link strong {
-  font-size: 3.5rem;
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  color: #a94509;
-}
-.discipline-link span {
-  font-size: 0.85rem;
-  line-height: 1.7;
-}
-.discipline-link:hover span {
-  text-decoration: underline;
-}
 .trade-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2899,7 +2884,8 @@ header.nav {
 .trade-card {
   display: flex;
   gap: 15px;
-  align-items: flex-start;
+  align-items: center;
+  min-height: 88px;
   padding: 24px 20px;
   background: #fff;
   border: 1px solid #e6cbb7;
@@ -2916,18 +2902,17 @@ header.nav {
 .trade-card svg {
   width: 30px;
   height: 30px;
+  max-width: 30px;
+  max-height: 30px;
   flex-shrink: 0;
   color: #a94509;
 }
 .trade-card h3 {
+  flex: 1;
+  min-width: 0;
   font-size: 1.1rem;
   line-height: 1.4;
   letter-spacing: -0.03em;
-}
-.trade-card p {
-  font-size: 0.87rem;
-  color: #536073;
-  margin-top: 8px;
 }
 .trade-arrow {
   margin-left: auto;
@@ -3346,15 +3331,6 @@ header.nav {
   .product-layout {
     gap: 36px;
   }
-  .trade-card {
-    flex-wrap: wrap;
-  }
-  .trade-card > div {
-    flex: 1 1 160px;
-  }
-  .trade-arrow {
-    display: none;
-  }
   .journey-tabs button {
     flex-direction: column;
     gap: 6px;
@@ -3375,9 +3351,6 @@ header.nav {
   .trade-card {
     flex-wrap: nowrap;
     padding: 22px;
-  }
-  .trade-arrow {
-    display: block;
   }
   .product-layout {
     grid-template-columns: 1fr;
@@ -3416,9 +3389,6 @@ header.nav {
   .trade-card h3 {
     font-size: 1rem;
   }
-  .trade-card p {
-    font-size: 0.82rem;
-  }
   .visual-toolbar {
     padding: 16px;
     flex-wrap: wrap;
@@ -3451,5 +3421,81 @@ header.nav {
   }
   .journey-panel {
     padding: 22px 18px;
+  }
+}
+
+.journey-aftercare {
+  margin-top: 24px;
+  color: #536073;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.journey-aftercare a {
+  color: var(--orange-deep);
+  font-weight: 600;
+}
+
+/* Full trade coverage stays visible independently of the feature filters. */
+.coverage-heading {
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+.coverage-heading p {
+  color: var(--muted);
+  margin-top: 16px;
+}
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.coverage-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--orange-deep);
+  border-radius: 12px;
+  padding: 28px;
+  scroll-margin-top: 100px;
+}
+.coverage-card h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 16px 0 22px;
+}
+.coverage-card ul {
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+.coverage-card li + li {
+  margin-top: 10px;
+}
+.coverage-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 22px 0;
+}
+.coverage-card .text-link {
+  margin-top: auto;
+  font-size: 0.85rem;
+}
+.coverage-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: 12px;
+  background: var(--navy-3);
+  color: #fff;
+}
+.coverage-highlights a {
+  font-size: 0.88rem;
+  text-underline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .coverage-grid {
+    grid-template-columns: 1fr;
   }
 }
