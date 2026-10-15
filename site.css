@@ -3434,3 +3434,68 @@ header.nav {
   color: var(--orange-deep);
   font-weight: 600;
 }
+
+/* Full trade coverage stays visible independently of the feature filters. */
+.coverage-heading {
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+.coverage-heading p {
+  color: var(--muted);
+  margin-top: 16px;
+}
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.coverage-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--orange-deep);
+  border-radius: 12px;
+  padding: 28px;
+  scroll-margin-top: 100px;
+}
+.coverage-card h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 16px 0 22px;
+}
+.coverage-card ul {
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+.coverage-card li + li {
+  margin-top: 10px;
+}
+.coverage-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 22px 0;
+}
+.coverage-card .text-link {
+  margin-top: auto;
+  font-size: 0.85rem;
+}
+.coverage-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: 12px;
+  background: var(--navy-3);
+  color: #fff;
+}
+.coverage-highlights a {
+  font-size: 0.88rem;
+  text-underline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .coverage-grid {
+    grid-template-columns: 1fr;
+  }
+}
