@@ -23,3 +23,11 @@ if (menu) {
       menu.open = false;
   });
 }
+
+// Reveal an answer when a visitor follows a direct link to its question.
+function revealLinkedDetails() {
+  const target = document.getElementById(location.hash.slice(1));
+  if (target?.matches("details")) target.open = true;
+}
+revealLinkedDetails();
+window.addEventListener("hashchange", revealLinkedDetails);
