@@ -3499,3 +3499,95 @@ header.nav {
     grid-template-columns: 1fr;
   }
 }
+
+/* Certificate confidence and small accessibility fixes across existing layouts. */
+.certificate-confidence {
+  background: #fff;
+  border-block: 1px solid var(--line);
+}
+.certificate-confidence .section-head {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+.certificate-confidence .text-link {
+  margin-top: 18px;
+}
+.coverage-heading .eyebrow {
+  color: var(--orange-deep);
+}
+.brand,
+.foot-brand,
+.nav-links a,
+a.text-link,
+.foot-col a,
+.coverage-highlights a,
+.more-links a,
+.crumbs a,
+.help-note a,
+main p a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+}
+/* Preserve the brand's existing flex layout and keep footer rows compact. */
+.brand,
+.foot-brand,
+.foot-col a {
+  display: flex;
+}
+.foot-col ul {
+  gap: 2px;
+}
+.home-questions summary,
+.feature-card summary {
+  min-height: 44px;
+  padding-block: 10px;
+}
+.home-questions details {
+  padding-block: 12px;
+}
+.feature-card details {
+  padding-top: 0;
+}
+.calc-row select,
+.calc-row input[type="range"] {
+  min-height: 44px;
+}
+.certificate-stage-table {
+  min-width: 0;
+  table-layout: fixed;
+  overflow-wrap: anywhere;
+}
+.certificate-stage-table tbody th {
+  width: 62%;
+}
+.roadmap-card h3 {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  line-height: normal;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-block: 1.33em 8px;
+}
+.card-grid .roadmap-card h3 {
+  margin-bottom: 10px;
+}
+.overview-card h2 {
+  font-size: 1.3rem;
+  letter-spacing: -0.035em;
+}
+
+@media (min-width: 801px) {
+  .sign-in {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+.hero .eyebrow {
+  color: #f0a776;
+}
