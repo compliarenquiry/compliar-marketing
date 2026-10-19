@@ -2778,7 +2778,8 @@ header.nav {
   font-size: 0.8rem;
   margin: 14px 0 8px;
 }
-.demo-preferences select {
+.demo-preferences select,
+.demo-preferences textarea {
   width: 100%;
   min-height: 44px;
   background: var(--cream);
@@ -2789,7 +2790,12 @@ header.nav {
   font-size: 0.85rem;
   padding: 10px;
 }
-.demo-preferences select:focus-visible {
+.demo-preferences textarea {
+  resize: vertical;
+  margin-bottom: 10px;
+}
+.demo-preferences select:focus-visible,
+.demo-preferences textarea:focus-visible {
   outline: 3px solid var(--orange);
   outline-offset: 3px;
 }
