@@ -1514,6 +1514,17 @@ header.nav {
 .nav-cta {
   gap: 22px;
 }
+.nav-cta .nav-demo {
+  margin-right: -10px;
+}
+#free-trial {
+  scroll-margin-top: 100px;
+}
+@media (max-width: 1180px) {
+  .nav-cta .nav-demo {
+    display: none;
+  }
+}
 .sign-in {
   color: #e1e8f0;
   text-decoration: none;
