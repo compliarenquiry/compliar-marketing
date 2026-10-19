@@ -3536,3 +3536,16 @@ header.nav {
     grid-template-columns: 1fr;
   }
 }
+
+/* Pricing: keep the three plan prices on one line when the cards sit side by side */
+.price-card .price-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+}
+@media (min-width: 900px) {
+  .price-card .price-for {
+    min-height: 7.5em;
+  }
+}
