@@ -1936,11 +1936,11 @@ header.nav {
   font-size: 0.85rem;
 }
 .price-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 .price-card {
-  padding: 25px 20px;
+  padding: 28px 24px;
   border-radius: 12px;
 }
 .price-name {
