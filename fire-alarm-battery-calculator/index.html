@@ -6,7 +6,7 @@
     <title>Fire Alarm Battery Calculator | BS 5839-1 — Compliar</title>
     <meta
       name="description"
-      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 6, 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
     />
     <link
       rel="canonical"
@@ -25,7 +25,7 @@
     />
     <meta
       property="og:description"
-      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 6, 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
     />
     <meta
       property="og:url"
@@ -46,7 +46,7 @@
     />
     <meta
       name="twitter:description"
-      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
+      content="Free fire alarm battery calculator. Enter quiescent and alarm current, choose 6, 24 or 72 hour standby, and get the capacity in Ah and the next standard battery size. Shows the working."
     />
     <script type="application/ld+json">
       [
@@ -77,7 +77,7 @@
               "name": "How do I calculate the battery size for a fire alarm panel?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Add the energy needed for the standby period to the energy needed for the alarm period, then add a margin. In formula form: capacity in Ah = (quiescent current × standby hours + alarm current × alarm hours) × 1.25. Then choose the next standard battery size up. The calculator on this page does it for you and shows the working."
+                "text": "For valve-regulated lead-acid batteries, BS 5839-1:2025 Annex E.1 uses Cmin = 1.25 × (T1 × I1 + D × I2 × T2), with currents in amps and periods in hours. First calculate with D = 1. If that capacity divided by 20 is at least the alarm current, keep D = 1; otherwise use the manufacturer's de-rating data or D = 1.75, as this calculator does. Under E.1.3, choose the next highest available size if the capacity is not an exact available size. The calculator shows the working."
               }
             },
             {
@@ -85,7 +85,7 @@
               "name": "How many hours of standby does a fire alarm battery need?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It depends on the system design and how quickly a mains or battery fault can be dealt with. 24 hours is commonly used, with 72 hours where a fault could not be put right within a day. Always follow the specification for your system and BS 5839-1."
+                "text": "BS 5839-1:2025 clause 24.3.5 sets 24 hours for Category M or L systems in most buildings, or 6 hours with an automatically started standby generator serving the system. For Category P, use 24 hours longer than the longest period the premises are likely to be unoccupied, or 72 hours in total, whichever is less. Follow each standby period with at least 30 minutes of alarm operation and check your system's specification."
               }
             },
             {
@@ -93,7 +93,7 @@
               "name": "How long must the batteries support the alarm?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Thirty minutes at full alarm load is the usual figure, which is the default here. Some specifications call for more or less, so the calculator lets you choose 15, 30 or 60 minutes."
+                "text": "At least 30 minutes at the total alarm load, following the standby period, under BS 5839-1:2025 clause 24.3.5. This calculator defaults to 30 minutes and also offers 60 minutes where a longer period is specified."
               }
             },
             {
@@ -144,6 +144,35 @@
     />
     <link rel="stylesheet" href="/site.css?v=3db2b589d659" />
     <script src="/site.js" defer></script>
+    <style>
+      .calc-card {
+        min-width: 0;
+      }
+      .calc-head,
+      .calc-result {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .calc-row input[type="range"],
+      .calc-row select {
+        min-height: 44px;
+      }
+      .calc-row select {
+        min-width: 0;
+        max-width: 100%;
+      }
+      .calc-context,
+      .calc-scope {
+        color: var(--muted-on-navy);
+        font-size: 0.8rem;
+      }
+      .calc-context {
+        margin-top: 8px;
+      }
+      .calc-scope {
+        margin-top: 14px;
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -221,7 +250,8 @@
               Work out the standby battery a fire alarm panel or power supply
               needs. Enter the quiescent and alarm currents, choose the standby
               period and alarm duration, and get the capacity in Ah plus the
-              next standard sealed lead-acid size up.
+              next available valve-regulated lead-acid battery size up. Built to
+              follow BS 5839-1:2025 Annex E, including the de-rating factor D.
             </p>
             <ul class="hero-bullets">
               <li>
@@ -260,13 +290,13 @@
                 >Runs in your browser — nothing you enter is stored
               </li>
             </ul>
-            <div class="standards"><span>BS 5839-1</span></div>
+            <div class="standards"><span>BS 5839-1:2025 Annex E</span></div>
           </div>
 
           <div class="calc-card">
             <div class="calc-head">
               <div class="calc-title">Battery sizing</div>
-              <div class="calc-badge">BS 5839-1 METHOD</div>
+              <div class="calc-badge">ANNEX E METHOD</div>
             </div>
             <div class="calc-desc">
               Enter your system's currents and periods. Nothing is stored or
@@ -305,36 +335,52 @@
             </div>
             <div class="calc-row">
               <label for="sb">Standby period</label>
-              <select id="sb" onchange="calcBattery()">
-                <option value="24" selected>24 hours</option>
-                <option value="72">72 hours</option>
+              <select
+                id="sb"
+                aria-describedby="standbyContext"
+                onchange="calcBattery()"
+              >
+                <option value="24" selected>24 h — Category M/L, most buildings</option>
+                <option value="6">
+                  6 h — Category M/L with an automatically started standby generator
+                </option>
+                <option value="72">72 h — Category P, the longest allowed</option>
               </select>
+              <p class="calc-context" id="standbyContext">
+                24 h — Category M/L, most buildings
+              </p>
             </div>
             <div class="calc-row">
               <label for="al">Alarm duration</label>
               <select id="al" onchange="calcBattery()">
-                <option value="15">15 minutes</option>
-                <option value="30" selected>30 minutes</option>
+                <option value="30" selected>30 minutes (minimum)</option>
                 <option value="60">60 minutes</option>
               </select>
             </div>
 
-            <div class="calc-result">
-              <div class="lbl">
-                Recommended battery<span class="need" id="needOut"
-                  >Calculated: 6.15 Ah</span
-                >
+            <div aria-live="polite" aria-atomic="true">
+              <div class="calc-result">
+                <div class="lbl">
+                  Recommended battery<span class="need" id="needOut"
+                    >Calculated: 6.71 Ah</span
+                  >
+                </div>
+                <div>
+                  <span class="out" id="sizeOut">7</span
+                  ><span class="unit">Ah</span>
+                </div>
               </div>
-              <div>
-                <span class="out" id="sizeOut">7</span
-                ><span class="unit">Ah</span>
-              </div>
+              <div class="calc-work" id="workOut"></div>
             </div>
-            <div class="calc-work" id="workOut"></div>
+            <p class="calc-scope">
+              For valve-regulated lead-acid batteries, to BS 5839-1:2025 Annex E.
+              For other battery types, take the figures from the battery manufacturer.
+            </p>
             <div class="calc-note">
               Illustrative guide only. Use the manufacturer's current figures
               for every device, and confirm the result against your design
-              specification and BS 5839-1.
+              specification and BS 5839-1:2025 Annex E. This guide can't replace
+              the design calculation.
             </div>
           </div>
         </div>
@@ -358,35 +404,46 @@
               has to be big enough for both, with an allowance on top for ageing
               and temperature.
             </p>
+            <p>
+              The method below follows BS 5839-1:2025 Annex E.1 for
+              valve-regulated lead-acid batteries. For other battery types,
+              consult the battery manufacturer (E.2).
+            </p>
             <div class="formula">
-              Capacity (Ah) = ( Iq × T<sub>standby</sub> + Ia × T<sub
-                >alarm</sub
-              >
-              ) × 1.25
+              Cmin = 1.25 × (T1 × I1 + D × I2 × T2)
             </div>
             <ul>
               <li>
-                <strong>Iq</strong> is the quiescent current in amps: everything
-                the system draws with no alarm active, including the panel
-                itself, detectors, interfaces and any ancillary equipment.
+                <strong>Cmin</strong> is the minimum battery capacity when new,
+                at the 20 hour discharge rate and 20 °C, in Ah.
               </li>
               <li>
-                <strong>T<sub>standby</sub></strong> is the standby period in
-                hours. 24 hours and 72 hours are the usual choices; your design
-                specification and BS 5839-1 decide which applies.
+                <strong>I1</strong> is the total standby (quiescent) load in amps:
+                the panel, detectors, interfaces and all ancillary equipment.
               </li>
               <li>
-                <strong>Ia</strong> is the alarm current in amps with the system
-                in alarm and all the devices that operate in an alarm drawing
-                current.
+                <strong>T1</strong> is the total standby period in hours, set by
+                clause 24.3.5: normally 24 hours for Category M/L, 6 hours with an
+                automatically started standby generator serving the system, or
+                up to 72 hours for Category P. See the standby FAQ below for the
+                Category P rule.
               </li>
               <li>
-                <strong>T<sub>alarm</sub></strong> is the alarm duration in
-                hours. Thirty minutes (0.5 h) is the usual figure.
+                <strong>I2</strong> is the total alarm load in amps, including
+                all devices that operate in an alarm.
               </li>
               <li>
-                <strong>1.25</strong> is a 25% allowance for battery ageing and
-                temperature, a commonly used design margin.
+                <strong>T2</strong> is the total alarm period in hours: at least
+                30 minutes (0.5 h) after the standby period.
+              </li>
+              <li>
+                <strong>D</strong> is the de-rating factor. First calculate Cmin
+                with D = 1. If Cmin / 20 is at least I2, keep D = 1. Otherwise,
+                use the battery manufacturer's data or D = 1.75. This calculator
+                uses 1.75 in that case.
+              </li>
+              <li>
+                <strong>1.25</strong> is part of the standard's formula.
               </li>
             </ul>
             <h3>Worked example</h3>
@@ -395,24 +452,25 @@
               of 1.2 A, on a 24 hour standby with a 30 minute alarm:
             </p>
             <div class="formula">
-              ( 0.18 A × 24 h + 1.2 A × 0.5 h ) × 1.25<br />= ( 4.32 + 0.60 ) ×
-              1.25 = 6.15 Ah
+              With D = 1: Cmin = 1.25 × (24 × 0.18 + 1.2 × 0.5) = 6.15 Ah.<br />
+              6.15 / 20 = 0.3075 A, less than 1.2 A, so use D = 1.75.<br />
+              Cmin = 1.25 × (24 h × 0.18 A + 1.75 × 1.2 A × 0.5 h) = 6.71 Ah.
             </div>
             <p>
-              The next standard size up is a 7 Ah battery. Change the standby
-              period to 72 hours and the same system needs ( 0.18 × 72 + 0.6 ) ×
-              1.25 = 16.95 Ah, so a 17 Ah battery. The standby period is usually
-              what drives the size.
+              The next available size is 7 Ah. With 72 hours of standby, the
+              same system still needs D = 1.75: Cmin = 1.25 × (72 × 0.18 +
+              1.75 × 1.2 × 0.5) = 17.51 Ah, so choose 24 Ah.
             </p>
-            <h3>Standard battery sizes</h3>
+            <h3>Available battery sizes</h3>
             <p>
-              The calculator rounds up to the next common sealed lead-acid
-              (VRLA) size:
+              Under Annex E.1.3, use the next highest available size if Cmin is
+              not an exact available size. The calculator compares the unrounded
+              capacity against the same sizes used by Compliar's certificate:
             </p>
             <div class="size-chips">
-              <span>2.1 Ah</span><span>3.2 Ah</span><span>7 Ah</span
-              ><span>12 Ah</span><span>17 Ah</span><span>24 Ah</span
-              ><span>26 Ah</span><span>38 Ah</span><span>65 Ah</span>
+              <span>7 Ah</span><span>9 Ah</span><span>12 Ah</span>
+              <span>17 Ah</span><span>24 Ah</span><span>38 Ah</span>
+              <span>65 Ah</span><span>100 Ah</span><span>120 Ah</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--muted)">
               Panels with a 24 V supply normally use two 12 V batteries wired in
@@ -507,12 +565,14 @@
                 How do I calculate the battery size for a fire alarm panel?
               </summary>
               <p>
-                Add the energy needed for the standby period to the energy
-                needed for the alarm period, then add a margin. In formula form:
-                capacity in Ah = (quiescent current × standby hours + alarm
-                current × alarm hours) × 1.25. Then choose the next standard
-                battery size up. The calculator on this page does it for you and
-                shows the working.
+                For valve-regulated lead-acid batteries, BS 5839-1:2025 Annex
+                E.1 uses Cmin = 1.25 × (T1 × I1 + D × I2 × T2), with currents
+                in amps and periods in hours. First calculate with D = 1. If
+                that capacity divided by 20 is at least the alarm current,
+                keep D = 1; otherwise use the manufacturer's de-rating data or
+                D = 1.75, as this calculator does. Under E.1.3, choose the
+                next highest available size if the capacity is not an exact
+                available size. The calculator shows the working.
               </p>
             </details>
             <details class="faq-item">
@@ -520,18 +580,22 @@
                 How many hours of standby does a fire alarm battery need?
               </summary>
               <p>
-                It depends on the system design and how quickly a mains or
-                battery fault can be dealt with. 24 hours is commonly used, with
-                72 hours where a fault could not be put right within a day.
-                Always follow the specification for your system and BS 5839-1.
+                BS 5839-1:2025 clause 24.3.5 sets 24 hours for Category M or L
+                systems in most buildings, or 6 hours with an automatically
+                started standby generator serving the system. For Category P,
+                use 24 hours longer than the longest period the premises are
+                likely to be unoccupied, or 72 hours in total, whichever is
+                less. Follow each standby period with at least 30 minutes of
+                alarm operation and check your system's specification.
               </p>
             </details>
             <details class="faq-item">
               <summary>How long must the batteries support the alarm?</summary>
               <p>
-                Thirty minutes at full alarm load is the usual figure, which is
-                the default here. Some specifications call for more or less, so
-                the calculator lets you choose 15, 30 or 60 minutes.
+                At least 30 minutes at the total alarm load, following the
+                standby period, under BS 5839-1:2025 clause 24.3.5. This
+                calculator defaults to 30 minutes and also offers 60 minutes
+                where a longer period is specified.
               </p>
             </details>
             <details class="faq-item">
@@ -641,45 +705,42 @@
         ><span>Company number: 17519777</span>
       </div>
     </footer>
+    <script src="/fire-alarm-battery-calculator/battery.js"></script>
     <script>
       function calcBattery() {
         var iq = parseFloat(document.getElementById("iq").value); // mA
         var ia = parseFloat(document.getElementById("ia").value); // A
-        var sb = parseFloat(document.getElementById("sb").value); // hours
+        var standby = document.getElementById("sb");
+        var sb = parseFloat(standby.value); // hours
         var al = parseFloat(document.getElementById("al").value) / 60; // hours
         document.getElementById("iqVal").textContent = iq;
         document.getElementById("iaVal").textContent = ia.toFixed(1);
+        document.getElementById("standbyContext").textContent =
+          standby.options[standby.selectedIndex].text;
 
         var iqA = iq / 1000;
-        var ah = (iqA * sb + ia * al) * 1.25;
-
-        var sizes = [2.1, 3.2, 7, 12, 17, 24, 26, 38, 65];
-        var chosen = null;
-        for (var i = 0; i < sizes.length; i++) {
-          if (ah <= sizes[i]) {
-            chosen = sizes[i];
-            break;
-          }
-        }
+        var result = window.CompliarBattery.batterySizing({
+          i1A: iqA, t1h: sb, i2A: ia, t2h: al
+        });
         document.getElementById("needOut").textContent =
-          "Calculated: " + ah.toFixed(2) + " Ah";
+          "Calculated: " + result.cmin.toFixed(2) + " Ah";
         document.getElementById("sizeOut").textContent =
-          chosen === null ? "65+" : chosen;
+          result.aboveMax ? "Above 120" : result.size;
         var work =
-          "(" +
-          iqA.toFixed(3) +
-          " A × " +
-          sb +
-          " h + " +
-          ia.toFixed(1) +
-          " A × " +
-          al.toFixed(2) +
-          " h) × 1.25 = " +
-          ah.toFixed(2) +
-          " Ah";
-        if (chosen === null)
-          work +=
-            " — above 65 Ah: use a larger power supply or split the load.";
+          "Cmin = 1.25 × (" + sb + " h × " + iqA.toFixed(3) +
+          " A + " + result.d + " × " + ia.toFixed(1) + " A × " + al +
+          " h) = " + result.cmin.toFixed(2) + " Ah. ";
+        if (result.d === 1) {
+          work += "D = 1 because Cmin / 20 is at least the alarm current.";
+        } else {
+          work += "D = 1.75 because " + result.c1.toFixed(2) +
+            " / 20 = " + (result.c1 / 20).toFixed(2) +
+            " A is less than the " + ia.toFixed(1) +
+            " A alarm current (initial calculation with D = 1).";
+        }
+        if (result.aboveMax) {
+          work += " Above 120 Ah: use a larger power supply or split the load across more than one supply.";
+        }
         document.getElementById("workOut").textContent = work;
       }
       calcBattery();
