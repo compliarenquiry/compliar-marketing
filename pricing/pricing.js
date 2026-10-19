@@ -11,20 +11,27 @@
       prices.forEach((price) => {
         const monthly = Number(price.dataset.monthly);
         const annual = monthly * paidMonths;
+        const atMonthlyRate = monthly * monthsPerYear;
+        // Yearly view leads with what the year costs; the monthly equivalent and the saving sit underneath.
         price.querySelector(".plan-amount").textContent = format(
-          yearly ? annual / monthsPerYear : monthly,
+          yearly ? annual : monthly,
         );
-        price.querySelector(".plan-original").hidden = !yearly;
+        price.querySelector(".plan-period").textContent = yearly
+          ? " + VAT /user/year, billed yearly"
+          : " + VAT /user/month";
+        const original = price.querySelector(".plan-original");
+        original.hidden = !yearly;
+        original.lastChild.textContent = format(atMonthlyRate);
         price.querySelector(".price-cta-sub").textContent = yearly
-          ? `${format(annual)} + VAT per user, billed yearly`
+          ? `Works out at ${format(annual / monthsPerYear)} + VAT per user a month`
           : `or ${format(annual)} + VAT per user, billed yearly`;
         const saving = price.querySelector(".plan-saving");
-        saving.textContent = `Save ${format(monthly * monthsPerYear - annual)} a year (2 months free)`;
+        saving.textContent = `Save ${format(atMonthlyRate - annual)} a year (2 months free)`;
         saving.hidden = !yearly;
       });
       document.getElementById("billing-status").textContent =
         yearly
-          ? "Monthly equivalents per user, billed yearly. Two months free compared with monthly billing. All prices exclude VAT."
+          ? "Yearly prices per user, paid once a year. Two months free compared with monthly billing. All prices exclude VAT."
           : "Prices per user, billed monthly. All prices exclude VAT.";
     }
     billing.addEventListener("change", updateBilling);
