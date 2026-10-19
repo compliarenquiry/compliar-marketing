@@ -31,4 +31,16 @@
   <url><loc>https://compliar.co.uk/resources/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://compliar.co.uk/contact/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://compliar.co.uk/getting-started/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://compliar.co.uk/terms/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://compliar.co.uk/privacy/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://compliar.co.uk/cookies/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
 </urlset>
