@@ -4,10 +4,14 @@
   const paidMonths = 10;
   const monthsPerYear = 12;
   const billing = document.querySelector(".billing-switch");
+  let yearlyBilling = false;
+  let refreshTotal = () => {};
   const prices = [...document.querySelectorAll(".plan-price")];
   if (billing) {
     function updateBilling() {
       const yearly = billing.querySelector(":checked").value === "yearly";
+      yearlyBilling = yearly;
+      refreshTotal();
       prices.forEach((price) => {
         const monthly = Number(price.dataset.monthly);
         const annual = monthly * paidMonths;
@@ -51,16 +55,34 @@
       (total, input) => total + seatCount(input) * Number(input.dataset.price),
       0,
     );
-    document.getElementById("scMonth").textContent = format(monthly);
     const annual = monthly * paidMonths;
-    document.getElementById("scYear").textContent = format(annual);
-    document.getElementById("scEquivalent").textContent = format(
-      annual / monthsPerYear,
-    );
-    document.getElementById("scSaving").textContent = format(
-      monthly * monthsPerYear - annual,
-    );
+    const equivalent = annual / monthsPerYear;
+    const saving = monthly * monthsPerYear - annual;
+    const text = (id, value) => {
+      document.getElementById(id).textContent = value;
+    };
+    // The billing choice above the cards decides which total leads.
+    if (yearlyBilling) {
+      text("scMain", format(annual));
+      text("scMainLabel", "+ VAT a year, paid yearly (two months free)");
+      text("scAltAmount", format(monthly));
+      document.getElementById("scAlt").lastChild.textContent =
+        " + VAT a month if paid monthly";
+    } else {
+      text("scMain", format(monthly));
+      text("scMainLabel", "+ VAT a month");
+      text("scAltAmount", format(annual));
+      document.getElementById("scAlt").lastChild.textContent =
+        " + VAT a year, paid yearly (two months free)";
+    }
+    const atMonthlyRate = monthly * monthsPerYear;
+    const note = document.getElementById("scNote");
+    note.hidden = monthly === 0;
+    note.textContent = yearlyBilling
+      ? `That is ${format(equivalent)} + VAT a month. Paying monthly would cost ${format(atMonthlyRate)} + VAT a year, so you save ${format(saving)} a year.`
+      : `Paying yearly costs ${format(annual)} + VAT a year (${format(equivalent)} a month), saving ${format(saving)} a year against monthly billing.`;
   }
+  refreshTotal = updateTotal;
   inputs.forEach((input) => {
     input.addEventListener("input", updateTotal);
     input.addEventListener("blur", () => {
