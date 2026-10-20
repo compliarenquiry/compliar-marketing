@@ -27,7 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/site.css?v=f09f250bfbad" />
+    <link rel="stylesheet" href="/site.css?v=c02fb42b703d" />
     <script src="/site.js" defer></script>
     <meta name="twitter:image" content="https://compliar.co.uk/og.png" />
     <meta
@@ -108,7 +108,7 @@
 </section>
 <section class="band">
   <div class="wrap prose">
-    <p><strong>Last updated:</strong> 19 October 2026.</p>
+    <p><strong>Last updated:</strong> 20 October 2026.</p>
 
     <h2>compliar.co.uk</h2>
     <p>
@@ -122,10 +122,12 @@
     <h2>The Compliar application (app.compliar.co.uk)</h2>
     <p>
       The application uses only strictly necessary storage: a session token so you stay signed in,
-      and local storage for drafts and preferences such as the last label size you printed. These
+      local storage for drafts and preferences such as the last label size you printed, and a copy
+      of your work records and unsent changes kept on the phone (in IndexedDB, with a service
+      worker) so the field app keeps working without signal. These
       are essential to provide the service you asked for, so consent is not required for them and
-      there is no banner. The application sets no analytics or advertising cookies. Stripe sets
-      its own cookies on its payment pages when you enter card details; see
+      there is no banner. None of it is used for tracking. The application sets no analytics or
+      advertising cookies. Stripe sets its own cookies on its payment pages when you enter card details; see
       <a href="https://stripe.com/gb/privacy" rel="noopener">Stripe's privacy policy</a>.
     </p>
 
