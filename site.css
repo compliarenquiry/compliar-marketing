@@ -3541,28 +3541,49 @@ header.nav {
 .standards-band .standards-lead {
   max-width: 62ch;
 }
+.standards-group {
+  margin-top: 28px;
+}
+.standards-group h3 {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .standards-grid {
   list-style: none;
-  margin: 24px 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
 }
 .standards-grid li {
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
+  min-width: 0;
 }
 .standards-grid b {
   font-size: 0.95rem;
 }
 .standards-grid span {
   color: var(--muted);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .standards-grid {
+    grid-template-columns: 1fr;
+  }
+  .standards-grid li {
+    padding: 10px 12px;
+  }
 }
 .standards-note {
   margin-top: 16px;
