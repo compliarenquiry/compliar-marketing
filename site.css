@@ -3544,8 +3544,37 @@ header.nav {
 .standards-group {
   margin-top: 28px;
 }
+.standards-group summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.standards-group summary::-webkit-details-marker {
+  display: none;
+}
+.standards-group summary::after {
+  content: "+";
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+.standards-group[open] summary::after {
+  content: "\2212";
+}
+.standards-group .standards-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 .standards-group h3 {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.08em;
